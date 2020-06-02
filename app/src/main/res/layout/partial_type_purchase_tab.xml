@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:theme="@style/AppTheme.Light">
+
+    <TextView
+        android:id="@+id/tab_title"
+        style="@style/Widget.TextView.Title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="2"
+        android:textAllCaps="true"
+        android:textSize="@dimen/dynamic_mini_text_size"
+        tools:text="Title" />
+
+</LinearLayout>

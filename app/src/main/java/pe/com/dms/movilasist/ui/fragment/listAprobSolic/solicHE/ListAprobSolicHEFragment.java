@@ -1,0 +1,322 @@
+package pe.com.dms.movilasist.ui.fragment.listAprobSolic.solicHE;
+
+import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.inject.Inject;
+
+import pe.com.dms.movilasist.R;
+import pe.com.dms.movilasist.annotacion.ActionSwipeRecycler;
+import pe.com.dms.movilasist.annotacion.OptionRegSolicPerm;
+import pe.com.dms.movilasist.bd.entity.SolicitudPermiso;
+import pe.com.dms.movilasist.databinding.FragmentListAprobSolicPermHEBinding;
+import pe.com.dms.movilasist.helpers.Constants;
+import pe.com.dms.movilasist.interfaces.OnFragmentInteractionListener;
+import pe.com.dms.movilasist.interfaces.OnItemClickActionListener;
+import pe.com.dms.movilasist.model.SolicitudesPermiso;
+import pe.com.dms.movilasist.model.filterModel.ResultListApobSolic;
+import pe.com.dms.movilasist.ui.adapter.fragments.listAprobSolicPerm.ListAprobSolicPermAdapter;
+import pe.com.dms.movilasist.ui.adapter.fragments.listAprobSolicPerm.ListAprobSolicPermHEAdapter;
+import pe.com.dms.movilasist.ui.adapter.fragments.listSolicPermFragment.ListSolicPermAdapter;
+import pe.com.dms.movilasist.ui.decorations.DividerItemDecoration;
+import pe.com.dms.movilasist.ui.dialog.DefaultDialog;
+import pe.com.dms.movilasist.ui.fragment.base.BaseMainFragment;
+import pe.com.dms.movilasist.ui.fragment.listAprobSolic.ListAprobSolicPagerFragment;
+import pe.com.dms.movilasist.ui.fragment.solicPermFragment.SolicPermisoFragment;
+import pe.com.dms.movilasist.util.DateUtils;
+import pe.com.dms.movilasist.util.ImageConverterUtils;
+import pe.com.dms.movilasist.model.ButtonSwipeAction;
+import pe.com.dms.movilasist.util.swipe.SwipeHelperUpdate;
+
+public class ListAprobSolicHEFragment extends BaseMainFragment implements View.OnClickListener,
+        IListAprobSolicHEFragmentContract.View {
+
+    public static final String TAG = ListAprobSolicHEFragment.class.getSimpleName();
+
+    private FragmentListAprobSolicPermHEBinding binding;
+
+    private OnFragmentInteractionListener mFragmentInteractionListener;
+
+    @Inject
+    ListAprobSolicHEFragmentPresenter presenter;
+
+    private ListAprobSolicPermHEAdapter mAdapter;
+    private LinearLayoutManager mLayoutManager;
+    private ItemTouchHelper mItemTouchHelper;
+    private List<SolicitudesPermiso> mListTempAprobar;
+    private List<String> mListTemp;
+
+
+    public ListAprobSolicHEFragment() {
+    }
+
+    public static ListAprobSolicHEFragment newInstance() {
+        ListAprobSolicHEFragment fragment = new ListAprobSolicHEFragment();
+        Bundle args = fragment.getArguments();
+        if (args == null) {
+            args = new Bundle();
+        }
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener) {
+            mFragmentInteractionListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new ClassCastException(
+                    context.toString() + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mFragmentInteractionListener = null;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getActivityComponent().inject(this);
+        Log.e(TAG, "onCreate");
+        presenter.attachView(this);
+        if (mListTempAprobar == null)
+            mListTempAprobar = new ArrayList<>();
+        if (mListTemp == null)
+            mListTemp = new ArrayList<>();
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        binding = FragmentListAprobSolicPermHEBinding.inflate(inflater, container, false);
+        initEvents();
+        setupRecyclerView();
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        viewListSolicPerm(null);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+        }
+    }
+
+    private void initEvents() {
+    }
+
+    private void setupRecyclerView() {
+        mLayoutManager = new LinearLayoutManager(getContext());
+        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        binding.recycler.setHasFixedSize(true);
+        binding.recycler.setLayoutManager(mLayoutManager);
+        binding.recycler.addItemDecoration(new DividerItemDecoration(getActivity(),
+                R.drawable.line_divider_primary, false, true));
+        mAdapter = new ListAprobSolicPermHEAdapter();
+
+        binding.recycler.setAdapter(mAdapter);
+        //binding.recycler.addOnScrollListener(recyclerViewOnScrollListener);
+
+        ItemTouchHelper.Callback callback = new SwipeHelperUpdate(getContext(), binding.recycler) {
+            @Override
+            public void instantiateUnderlayButton(RecyclerView.ViewHolder viewHolder,
+                                                  List<ButtonSwipeAction> createButtonSwipes) {
+                createButtonSwipes.add(new ButtonSwipeAction(
+                        "Borrar",
+                        ImageConverterUtils.drawableToBitmap(getResources().getDrawable(R.drawable.ic_action_delete)),
+                        Color.parseColor("#FF1744"),
+                        new OnItemClickActionListener() {
+                            @Override
+                            public void onClick(int pos) {
+                                Log.e(TAG, "onClick pos: " + pos);
+                                Log.e(TAG, "onClick marcacion: " + mAdapter.getObject(pos));
+                                switch (mAdapter.getObject(pos).getIntEstadoSolicitud()) {
+                                    case 0:
+                                        mostrarMensajeConfirmacionDeleteMarc(mAdapter.getObject(pos));
+                                        break;
+                                    default:
+                                        showWarningMessage("No puede realizar esta acción");
+                                        break;
+                                }
+
+                            }
+                        }
+                ));
+                createButtonSwipes.add(new ButtonSwipeAction(
+                        "Aceptar",
+                        ImageConverterUtils.drawableToBitmap(getResources().getDrawable(R.drawable.ic_action_done)),
+                        Color.parseColor("#3F51B5"),
+                        new OnItemClickActionListener() {
+                            @Override
+                            public void onClick(int pos) {
+                                Log.e(TAG, "onClick pos: " + pos);
+                                Log.e(TAG, "onClick mAdapter.getObject(pos): " + mAdapter.getObject(pos));
+                                switch (mAdapter.getObject(pos).getIntEstadoSolicitud()) {
+                                    case 0:
+                                        mostrarMensajeConfirmacionAprobMarc(mAdapter.getObject(pos));
+                                        break;
+                                    default:
+                                        showWarningMessage("No puede realizar esta acción");
+                                        break;
+                                }
+
+                            }
+                        }
+                ));
+            }
+        };
+        mItemTouchHelper = new ItemTouchHelper(callback);
+        mItemTouchHelper.attachToRecyclerView(binding.recycler);
+    }
+
+    /*private void setupSwipeRefresh() {
+        binding.swipeRecycler.setProgressBackgroundColorSchemeColor(
+                getResources().getColor(R.color.colorCardLight));
+        binding.swipeRecycler.setColorSchemeResources(R.color.colorAccent);
+        binding.swipeRecycler.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        loadData();
+                        binding.swipeRecycler.setRefreshing(false);
+                    }
+                });
+
+        SwipeHelper swipeHelper = new SwipeHelper(getContext(), binding.recycler) {
+            @Override
+            public void instantiateUnderlayButton(RecyclerView.ViewHolder viewHolder,
+                                                  List<UnderlayButton> underlayButtons) {
+                underlayButtons.add(new SwipeHelper.UnderlayButton(
+                        "Delete",
+                        ImageConverterUtils.drawableToBitmap(getResources().getDrawable(R.drawable.ic_action_delete)),
+                        Color.parseColor("#FF1744"),
+                        new SwipeHelper.UnderlayButtonClickListener() {
+                            @Override
+                            public void onClick(int pos) {
+                                Log.e(TAG, "onClick pos: " + pos);
+                                Log.e(TAG, "onClick marcacion: " + mAdapter.getObject(pos));
+                                mostrarMensajeConfirmacionDeleteMarc(mAdapter.getObject(pos));
+
+                            }
+                        }
+                ));
+
+                underlayButtons.add(new SwipeHelper.UnderlayButton(
+                        "Edit",
+                        ImageConverterUtils.drawableToBitmap(getResources().getDrawable(R.drawable.ic_action_edit)),
+                        Color.parseColor("#3F51B5"),
+                        new SwipeHelper.UnderlayButtonClickListener() {
+                            @Override
+                            public void onClick(int pos) {
+                                Log.e(TAG, "onClick pos: " + pos);
+                                Log.e(TAG, "onClick marcacion: " + mAdapter.getObject(pos));
+                                //mostrarMensajeConfirmacionDeleteMarc(mAdapter.getObject(pos));
+                            }
+                        }
+                ));
+            }
+        };
+        swipeHelper.attachSwipe();
+    }*/
+
+    @Override
+    public void setResultListApobSolic(ResultListApobSolic resultListApobSolic) {
+        presenter.setResultListApobSolic(resultListApobSolic);
+    }
+
+    @Override
+    public void viewListSolicPerm(List<SolicitudesPermiso> listSolicPerm) {
+        if (listSolicPerm != null) {
+            binding.recycler.setVisibility(View.VISIBLE);
+            binding.txtListEmpty.setVisibility(View.GONE);
+            mAdapter.setData((ArrayList<SolicitudesPermiso>) listSolicPerm);
+        } else {
+            binding.recycler.setVisibility(View.GONE);
+            binding.txtListEmpty.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void mostrarMensajeConfirmacionDeleteMarc(SolicitudesPermiso solicitudesPermiso) {
+        new DefaultDialog.Builder(getContext())
+                .title(getResources().getString(R.string.attention))
+                .message("Va a eliminar un permiso\n" +
+                        "¿Desea eleminar  el permiso seleccionada?")
+                .cancelable(false)
+                .setIcon(R.drawable.ic_help_outline)
+                .textPositiveButton(getResources().getString(R.string.button_delete))
+                .textColorPositiveButton(R.color.danger)
+                .textNegativeButton(getResources().getString(R.string.button_cancel))
+                .textColorNegativeButton(R.color.success)
+                .dialogType(DefaultDialog.DialogType.CONFIRM)
+                .onPositive(new DefaultDialog.OnSingleButtonListener() {
+                    @Override
+                    public void onClick(@NonNull DialogInterface dialog) {
+                        dialog.dismiss();
+                        presenter.deleteSolicitudOnLine(solicitudesPermiso);
+                    }
+                })
+                .onNegative(new DefaultDialog.OnSingleButtonListener() {
+                    @Override
+                    public void onClick(@NonNull DialogInterface dialog) {
+                        dialog.dismiss();
+                    }
+                })
+                .buildAndShow(((AppCompatActivity) getActivity()).getSupportFragmentManager(),
+                        Constants.TAG_DIALOG_DELETE_MARC);
+    }
+
+    private void mostrarMensajeConfirmacionAprobMarc(SolicitudesPermiso solicitudesPermiso) {
+        new DefaultDialog.Builder(getContext())
+                .title(getResources().getString(R.string.attention))
+                .message("Va a Aprobar un permiso\n" +
+                        "¿Desea aprobar el permiso seleccionada?")
+                .cancelable(false)
+                .setIcon(R.drawable.ic_help_outline)
+                .textPositiveButton(getResources().getString(R.string.button_aprobe))
+                .textColorPositiveButton(R.color.danger)
+                .textNegativeButton(getResources().getString(R.string.button_cancel))
+                .textColorNegativeButton(R.color.success)
+                .dialogType(DefaultDialog.DialogType.CONFIRM)
+                .onPositive(new DefaultDialog.OnSingleButtonListener() {
+                    @Override
+                    public void onClick(@NonNull DialogInterface dialog) {
+                        dialog.dismiss();
+                        presenter.aprobeSolicitudOnLine(solicitudesPermiso);
+                    }
+                })
+                .onNegative(new DefaultDialog.OnSingleButtonListener() {
+                    @Override
+                    public void onClick(@NonNull DialogInterface dialog) {
+                        dialog.dismiss();
+                    }
+                })
+                .buildAndShow(((AppCompatActivity) getActivity()).getSupportFragmentManager(),
+                        Constants.TAG_DIALOG_DELETE_MARC);
+    }
+}

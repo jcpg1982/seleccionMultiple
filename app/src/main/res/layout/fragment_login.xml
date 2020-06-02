@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    class="pe.com.dms.movilasist.ui.fragment.loginFragment.LoginFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/line2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/line3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/line4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".85" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/line5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".7" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/line6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".69" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/content_inset_regular"
+        android:src="@drawable/icon_login"
+        app:layout_constraintBottom_toTopOf="@+id/line2"
+        app:layout_constraintEnd_toStartOf="@+id/line4"
+        app:layout_constraintStart_toEndOf="@+id/line3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_over_light"
+        app:cardElevation="3dp"
+        app:layout_constraintBottom_toTopOf="@id/line5"
+        app:layout_constraintEnd_toStartOf="@id/line4"
+        app:layout_constraintStart_toEndOf="@id/line3"
+        app:layout_constraintTop_toBottomOf="@id/line2">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/overlay_light">
+
+            <TextView
+                android:id="@+id/text_login1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/content_inset"
+                android:gravity="center"
+                android:text="Login"
+                android:textSize="@dimen/dynamic_title_text_size"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/text_user"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_user"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/content_inset"
+                android:layout_marginEnd="@dimen/content_inset"
+                android:layout_marginBottom="@dimen/content_inset"
+                android:hint="@string/user_hint"
+                android:textSize="@dimen/dynamic_body_text_size"
+                app:layout_constraintBottom_toTopOf="@+id/text_password"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_login1">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/content_inset"
+                    android:gravity="top|left"
+                    android:lines="1"
+                    android:maxLength="20"
+                    android:maxLines="1"
+                    android:minLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/dynamic_body_text_size" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_password"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/content_inset"
+                android:layout_marginEnd="@dimen/content_inset"
+                android:layout_marginBottom="@dimen/content_inset"
+                android:hint="@string/pass_hint"
+                android:singleLine="true"
+                android:textSize="@dimen/dynamic_body_text_size"
+                app:layout_constraintBottom_toTopOf="@+id/text_recovery_password"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_user"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/content_inset_less_card"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPassword"
+                    android:maxLength="20"
+                    android:maxLines="1"
+                    android:textSize="@dimen/dynamic_body_text_size" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/text_recovery_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/content_inset"
+                android:layout_marginEnd="@dimen/content_inset"
+                android:layout_marginBottom="@dimen/content_inset"
+                android:gravity="right"
+                android:text="Olvido su contraseña"
+                android:textSize="@dimen/dynamic_title_text_size"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_password" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_login"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/content_inset"
+        android:layout_marginEnd="@dimen/content_inset"
+        android:clickable="true"
+        android:elevation="5dp"
+        android:focusable="true"
+        android:text="@string/button_login"
+        android:textColor="@color/colorCardLight"
+        app:cornerRadius="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/line4"
+        app:layout_constraintStart_toEndOf="@id/line3"
+        app:layout_constraintTop_toBottomOf="@+id/line6" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    class="pe.com.dms.movilasist.ui.fragment.regAsistFragment.RegistroAsistenciaFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".5" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/content_inset"
+            android:background="@drawable/shape_light"
+            android:elevation="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/line1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container_cod_personal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/content_inset"
+                    android:layout_marginTop="@dimen/content_inset"
+                    android:layout_marginEnd="@dimen/content_inset"
+                    app:layout_constraintBottom_toTopOf="@+id/container_name_last_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/text_cod_personal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="@string/cod_personal"
+                        android:textColor="@color/colorCardDark"
+                        android:textSize="@dimen/dynamic_body_text_size"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent=".4" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/container_input_cod_personal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/content_inset"
+                        android:background="@drawable/radios_background"
+                        app:layout_constraintBottom_toBottomOf="@+id/text_cod_personal"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_search"
+                        app:layout_constraintStart_toEndOf="@+id/text_cod_personal"
+                        app:layout_constraintTop_toTopOf="@+id/text_cod_personal"
+                        app:layout_constraintWidth_percent=".47">
+
+                        <EditText
+                            android:id="@+id/input_cod_personal"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:textColor="@color/colorCardDark"
+                            android:textSize="@dimen/dynamic_body_text_size"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <ImageView
+                        android:id="@+id/btn_search"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_action_search"
+                        android:tint="@color/colorCardDark"
+                        app:layout_constraintBottom_toBottomOf="@+id/container_input_cod_personal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/container_input_cod_personal"
+                        app:layout_constraintTop_toTopOf="@+id/container_input_cod_personal" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container_name_last_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/content_inset"
+                    android:layout_marginTop="@dimen/content_inset"
+                    android:layout_marginEnd="@dimen/content_inset"
+                    app:layout_constraintBottom_toTopOf="@+id/container_motivo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/container_cod_personal">
+
+                    <TextView
+                        android:id="@+id/text_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="@string/name_last_name"
+                        android:textColor="@color/colorCardDark"
+                        android:textSize="@dimen/dynamic_body_text_size"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent=".4" />
+
+                    <TextView
+                        android:id="@+id/text_name_last_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/content_inset"
+                        android:gravity="start"
+                        android:textColor="@color/colorCardDark"
+                        android:textSize="@dimen/dynamic_body_text_size"
+                        app:layout_constraintBottom_toBottomOf="@+id/text_name"
+                        app:layout_constraintStart_toEndOf="@+id/text_name"
+                        app:layout_constraintTop_toTopOf="@+id/text_name"
+                        app:layout_constraintWidth_percent=".45"
+                        tools:text="Juan Perez" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container_motivo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/content_inset"
+                    android:layout_marginTop="@dimen/content_inset"
+                    android:layout_marginEnd="@dimen/content_inset"
+                    app:layout_constraintBottom_toTopOf="@+id/container_type_marcacion"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/container_name_last_name">
+
+                    <TextView
+                        android:id="@+id/text_motivo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="@string/motivo"
+                        android:textColor="@color/colorCardDark"
+                        android:textSize="@dimen/dynamic_body_text_size"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent=".4" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/container_spiner_motivo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/content_inset"
+                        android:background="@drawable/radios_background"
+                        app:layout_constraintBottom_toBottomOf="@+id/text_motivo"
+                        app:layout_constraintStart_toEndOf="@+id/text_motivo"
+                        app:layout_constraintTop_toTopOf="@+id/text_motivo"
+                        app:layout_constraintWidth_percent=".45">
+
+                        <Spinner
+                            android:id="@+id/sp_motivo"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:inputType="number"
+                            android:textColor="@color/colorCardDark"
+                            android:textSize="@dimen/dynamic_body_text_size"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/btn_arrow"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/btn_arrow"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_arrow_down"
+                            android:tint="@color/colorCardDark"
+                            app:layout_constraintBottom_toBottomOf="@+id/sp_motivo"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/sp_motivo"
+                            app:layout_constraintTop_toTopOf="@+id/sp_motivo" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container_type_marcacion"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/content_inset"
+                    android:layout_marginTop="@dimen/content_inset"
+                    android:layout_marginEnd="@dimen/content_inset"
+                    app:layout_constraintBottom_toTopOf="@+id/container_photo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/container_motivo">
+
+                    <TextView
+                        android:id="@+id/text_tipo_marcacion"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="@string/type_marc"
+                        android:textColor="@color/colorCardDark"
+                        android:textSize="@dimen/dynamic_body_text_size"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent=".4" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/container_spiner_tipo_marc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/content_inset"
+                        android:background="@drawable/radios_background"
+                        app:layout_constraintBottom_toBottomOf="@+id/text_tipo_marcacion"
+                        app:layout_constraintStart_toEndOf="@+id/text_tipo_marcacion"
+                        app:layout_constraintTop_toTopOf="@+id/text_tipo_marcacion"
+                        app:layout_constraintWidth_percent=".45">
+
+                        <Spinner
+                            android:id="@+id/sp_type_marc"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:hint="@string/type_marcacion_hint"
+                            android:inputType="number"
+                            android:textColor="@color/colorCardDark"
+                            android:textColorHint="@color/colorCardDark"
+                            android:textSize="@dimen/dynamic_mini_text_size"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/btn_arrow1"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/btn_arrow1"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_arrow_down"
+                            android:tint="@color/colorCardDark"
+                            app:layout_constraintBottom_toBottomOf="@+id/sp_type_marc"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/sp_type_marc"
+                            app:layout_constraintTop_toTopOf="@+id/sp_type_marc" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container_photo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/content_inset"
+                    android:layout_marginTop="@dimen/content_inset"
+                    android:layout_marginEnd="@dimen/content_inset"
+                    app:layout_constraintBottom_toTopOf="@+id/btn_send_marc"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/container_type_marcacion">
+
+                    <TextView
+                        android:id="@+id/text_photo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="@string/photo"
+                        android:textColor="@color/colorCardDark"
+                        android:textSize="@dimen/dynamic_body_text_size"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent=".4" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/container_input_photo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/content_inset"
+                        android:background="@drawable/radios_background"
+                        app:layout_constraintBottom_toBottomOf="@+id/text_photo"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_add_photo"
+                        app:layout_constraintStart_toEndOf="@+id/text_photo"
+                        app:layout_constraintTop_toTopOf="@+id/text_photo"
+                        app:layout_constraintWidth_percent=".47">
+
+                        <EditText
+                            android:id="@+id/input_photo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:maxLines="1"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <ImageView
+                        android:id="@+id/btn_add_photo"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_action_photo"
+                        android:textColor="@color/colorCardDark"
+                        android:textSize="@dimen/dynamic_body_text_size"
+                        android:tint="@color/colorCardDark"
+                        app:layout_constraintBottom_toBottomOf="@+id/container_input_photo"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/container_input_photo"
+                        app:layout_constraintTop_toTopOf="@+id/container_input_photo" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Button
+                    android:id="@+id/btn_send_marc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/content_inset"
+                    android:layout_marginBottom="@dimen/content_inset"
+                    android:text="@string/button_marc"
+                    android:textColor="@color/colorCardLight"
+                    android:textSize="@dimen/static_body_text_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/container_photo" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_mapa"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/content_inset"
+            android:background="@drawable/shape_light"
+            android:elevation="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_last_marc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/line1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <fragment
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:clickable="false"
+                    app:layout_constraintBottom_toTopOf="@+id/container_address"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/content_inset"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <ImageView
+                        android:id="@+id/ic_location"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_action_location"
+                        android:tint="@color/colorCardDark"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/text_address"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="@string/action_search_location_ellipsis"
+                        android:textColor="@color/colorCardDark"
+                        android:textSize="@dimen/dynamic_body_text_size"
+                        app:layout_constraintBottom_toBottomOf="@+id/ic_location"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/ic_location"
+                        app:layout_constraintTop_toTopOf="@+id/ic_location" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/btn_last_marc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_inset"
+            android:text="@string/button_last_marc"
+            android:textColor="@color/colorCardLight"
+            android:textSize="@dimen/static_body_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

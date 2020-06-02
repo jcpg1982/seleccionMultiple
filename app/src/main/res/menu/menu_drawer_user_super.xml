@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.activities.mainActivity.MainActivity">
+
+    <group
+        android:id="@+id/asistencia"
+        android:checkableBehavior="single"
+        android:visible="true">
+
+        <item
+            android:id="@+id/nav_reg_asist"
+            android:checkable="false"
+            android:checked="false"
+            android:enabled="true"
+            android:icon="@drawable/ic_nav_reg_asist"
+            android:title="@string/nav_reg_asist"
+            android:titleCondensed=""
+            android:visible="true" />
+
+        <item
+            android:id="@+id/nav_list_marc"
+            android:checkable="false"
+            android:checked="false"
+            android:enabled="true"
+            android:icon="@drawable/ic_nav_list_marc"
+            android:title="@string/nav_list_marc"
+            android:titleCondensed=""
+            android:visible="true" />
+
+        <item
+            android:id="@+id/nav_marc_pers"
+            android:checkable="false"
+            android:checked="false"
+            android:enabled="true"
+            android:icon="@drawable/ic_nav_list_marc_pers"
+            android:title="@string/nav_list_marc_pers"
+            android:titleCondensed=""
+            android:visible="true" />
+
+    </group>
+
+    <group
+        android:id="@+id/permisos"
+        android:checkableBehavior="single"
+        android:visible="true">
+
+        <item
+            android:id="@+id/nav_sol_perm"
+            android:checkable="false"
+            android:checked="false"
+            android:enabled="true"
+            android:icon="@drawable/ic_nav_sol_perm"
+            android:title="@string/nav_sol_perm"
+            android:titleCondensed=""
+            android:visible="true" />
+
+        <item
+            android:id="@+id/nav_list_sol_perm"
+            android:checkable="false"
+            android:checked="false"
+            android:enabled="true"
+            android:icon="@drawable/ic_nav_list_solic_perm"
+            android:title="@string/nav_list_sol_perm"
+            android:titleCondensed=""
+            android:visible="true" />
+
+        <item
+            android:id="@+id/nav_apro_sol"
+            android:checkable="false"
+            android:checked="false"
+            android:enabled="true"
+            android:icon="@drawable/ic_nav_aprob_solic"
+            android:title="@string/nav_aprob_solic"
+            android:titleCondensed=""
+            android:visible="true" />
+
+    </group>
+
+    <group
+        android:id="@+id/optional"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_logout"
+            android:checkable="false"
+            android:checked="false"
+            android:enabled="true"
+            android:icon="@drawable/ic_nav_exit"
+            android:iconTint="@color/colorCardDark"
+            android:title="@string/nav_cerrar_session"
+            android:titleCondensed=""
+            android:visible="true" />
+
+    </group>
+
+</menu>

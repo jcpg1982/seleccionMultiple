@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.activities.mainActivity.MainActivity">
+
+    <group
+        android:id="@+id/main"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_my_account"
+            android:checkable="false"
+            android:checked="false"
+            android:enabled="true"
+            android:icon="@drawable/ic_action_settings"
+            android:iconTint="@color/colorCardDark"
+            android:title="Configuracion"
+            android:titleCondensed=""
+            android:visible="true" />
+    </group>
+
+    <group
+        android:id="@+id/optional"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_logout"
+            android:checkable="false"
+            android:checked="false"
+            android:enabled="true"
+            android:icon="@drawable/ic_nav_exit"
+            android:iconTint="@color/colorCardDark"
+            android:title="@string/nav_cerrar_session"
+            android:titleCondensed=""
+            android:visible="true" />
+
+    </group>
+
+</menu>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    class="pe.com.dms.movilasist.ui.fragment.configFragment.configIpFragment.ConfigIpFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/text_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_inset"
+            android:text="@string/message_server"
+            android:textColor="@color/colorCardDark"
+            android:textSize="@dimen/dynamic_body_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_current"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_inset"
+            android:text="@string/current_ip"
+            android:textColor="@color/colorCardDark"
+            android:textSize="@dimen/dynamic_body_text_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_header" />
+
+        <EditText
+            android:id="@+id/input_ip"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_inset"
+            android:textColor="@color/colorCardDark"
+            android:textSize="@dimen/dynamic_body_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_current" />
+
+        <FrameLayout
+            android:id="@+id/container_image"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_inset"
+            android:foregroundGravity="center|center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_ip">
+
+            <ImageView
+                android:id="@+id/image_scanner"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_margin="@dimen/content_inset"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_action_person"
+                android:tint="@color/colorCardDark" />
+
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/btn_scan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_inset"
+            android:background="@drawable/button_shadow"
+            android:elevation="5dp"
+            android:text="@string/button_scan"
+            android:textSize="@dimen/static_body_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/container_image" />
+
+        <TextView
+            android:id="@+id/text_config_manual"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_inset"
+            android:gravity="center"
+            android:text="@string/conf_manual"
+            android:textColor="@color/links"
+            android:textSize="@dimen/dynamic_title_text_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_scan" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

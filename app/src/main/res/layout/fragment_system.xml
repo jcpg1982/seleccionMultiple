@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    class="pe.com.dms.movilasist.ui.fragment.configFragment.systemFragment.SystemFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/content_inset">
+
+        <TextView
+            android:id="@+id/text_cod_terminal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_inset"
+            android:text="@string/cod_terminal"
+            android:textColor="@color/colorCardDark"
+            android:textSize="@dimen/dynamic_body_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/input_cod_terminal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_inset"
+            android:textColor="@color/colorCardDark"
+            android:textSize="@dimen/dynamic_body_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_cod_terminal" />
+
+        <Switch
+            android:id="@+id/sw_asist_gps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_inset"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_cod_terminal" />
+
+        <TextView
+            android:id="@+id/text_asist_gps"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_inset"
+            android:gravity="start"
+            android:text="@string/asist_gps"
+            android:textColor="@color/colorCardDark"
+            android:textSize="@dimen/dynamic_body_text_size"
+            app:layout_constraintBottom_toBottomOf="@+id/sw_asist_gps"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/sw_asist_gps"
+            app:layout_constraintTop_toTopOf="@+id/sw_asist_gps" />
+
+        <Switch
+            android:id="@+id/sw_marc_grupo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_inset"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sw_asist_gps" />
+
+        <TextView
+            android:id="@+id/text_marc_grupo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_inset"
+            android:gravity="start"
+            android:text="@string/marc_grupo"
+            android:textColor="@color/colorCardDark"
+            android:textSize="@dimen/dynamic_body_text_size"
+            app:layout_constraintBottom_toBottomOf="@+id/sw_marc_grupo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/sw_marc_grupo"
+            app:layout_constraintTop_toTopOf="@+id/sw_marc_grupo" />
+
+        <Switch
+            android:id="@+id/sw_ident_marc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_inset"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sw_marc_grupo" />
+
+        <TextView
+            android:id="@+id/text_ident_marc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_inset"
+            android:gravity="start"
+            android:text="@string/ident_marc"
+            android:textColor="@color/colorCardDark"
+            android:textSize="@dimen/dynamic_body_text_size"
+            app:layout_constraintBottom_toBottomOf="@+id/sw_ident_marc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/sw_ident_marc"
+            app:layout_constraintTop_toTopOf="@+id/sw_ident_marc" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_ident_marc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/sw_int_va_web"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sw_ident_marc"
+            tools:visibility="visible">
+
+            <Switch
+                android:id="@+id/sw_pers_no_exist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/content_inset"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/container_ident_marc"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_pers_no_exist"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/content_inset"
+                android:gravity="start"
+                android:text="@string/pers_no_exist"
+                android:textColor="@color/colorCardDark"
+                android:textSize="@dimen/dynamic_body_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/sw_pers_no_exist"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/sw_pers_no_exist"
+                app:layout_constraintTop_toTopOf="@+id/sw_pers_no_exist" />
+
+            <Switch
+                android:id="@+id/sw_cod_barras"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/content_inset"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sw_pers_no_exist" />
+
+            <TextView
+                android:id="@+id/text_cod_barras"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/content_inset"
+                android:gravity="start"
+                android:text="@string/cod_barras"
+                android:textColor="@color/colorCardDark"
+                android:textSize="@dimen/dynamic_body_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/sw_cod_barras"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/sw_cod_barras"
+                app:layout_constraintTop_toTopOf="@+id/sw_cod_barras" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Switch
+            android:id="@+id/sw_int_va_web"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_inset"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/container_ident_marc" />
+
+        <TextView
+            android:id="@+id/text_int_vq_web"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_inset"
+            android:gravity="start"
+            android:text="@string/int_vaweb"
+            android:textColor="@color/colorCardDark"
+            android:textSize="@dimen/dynamic_body_text_size"
+            app:layout_constraintBottom_toBottomOf="@+id/sw_int_va_web"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/sw_int_va_web"
+            app:layout_constraintTop_toTopOf="@+id/sw_int_va_web" />
+
+        <Switch
+            android:id="@+id/sw_add_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_inset"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sw_int_va_web" />
+
+        <TextView
+            android:id="@+id/text_add_photo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_inset"
+            android:gravity="start"
+            android:text="@string/add_photo"
+            android:textColor="@color/colorCardDark"
+            android:textSize="@dimen/dynamic_body_text_size"
+            app:layout_constraintBottom_toBottomOf="@+id/sw_add_photo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/sw_add_photo"
+            app:layout_constraintTop_toTopOf="@+id/sw_add_photo" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_tiemnpo_entre_marcaciones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_inset"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sw_add_photo">
+
+            <TextView
+                android:id="@+id/text_time_marc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/time_marc"
+                android:textColor="@color/colorCardDark"
+                android:textSize="@dimen/dynamic_body_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/input_time_marc"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/content_inset"
+                android:inputType="number"
+                android:textColor="@color/colorCardDark"
+                android:textSize="@dimen/dynamic_body_text_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_time_marc" />
+
+            <TextView
+                android:id="@+id/text_time_marc_seg"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/content_inset"
+                android:text="@string/seg"
+                android:textColor="@color/colorCardDark"
+                android:textSize="@dimen/dynamic_body_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/input_time_marc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/input_time_marc"
+                app:layout_constraintTop_toTopOf="@+id/input_time_marc" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_mostrar_marcaciones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_inset"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/container_tiemnpo_entre_marcaciones">
+
+            <TextView
+                android:id="@+id/text_most_marc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/most_marc"
+                android:textColor="@color/colorCardDark"
+                android:textSize="@dimen/dynamic_body_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/input_most_marc"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/content_inset"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:inputType="number"
+                android:textColor="@color/colorCardDark"
+                android:textSize="@dimen/dynamic_body_text_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_most_marc" />
+
+            <TextView
+                android:id="@+id/text_mostrar_marc_dias"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/content_inset"
+                android:text="@string/dias"
+                android:textColor="@color/colorCardDark"
+                android:textSize="@dimen/dynamic_body_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/input_most_marc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/input_most_marc"
+                app:layout_constraintTop_toTopOf="@+id/input_most_marc" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_mostrar_permisos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_inset"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/container_mostrar_marcaciones">
+
+            <TextView
+                android:id="@+id/text_most_perm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/most_perm"
+                android:textColor="@color/colorCardDark"
+                android:textSize="@dimen/dynamic_body_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/input_most_perm"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/content_inset"
+                android:inputType="number"
+                android:textColor="@color/colorCardDark"
+                android:textSize="@dimen/dynamic_body_text_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_most_perm" />
+
+            <TextView
+                android:id="@+id/text_most_perm_seg"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/content_inset"
+                android:text="@string/dias"
+                android:textColor="@color/colorCardDark"
+                android:textSize="@dimen/dynamic_body_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/input_most_perm"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/input_most_perm"
+                app:layout_constraintTop_toTopOf="@+id/input_most_perm" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

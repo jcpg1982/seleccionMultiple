@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_item"
+    class="pe.com.dms.movilasist.ui.adapter.fragments.listSolicPermFragment.ListSolicPermAdapter"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?android:selectableItemBackground"
+    tools:background="@drawable/selector_item_checkable_check">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_data"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/content_inset_half"
+        android:layout_marginEnd="@dimen/content_inset_half"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/line1"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".47" />
+
+        <TextView
+            android:id="@+id/txt_cod_user"
+            style="@style/Widget.TextView.Description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="123456789"
+            android:textColor="@color/drawer_text_selector"
+            android:textSize="@dimen/dynamic_body_text_size"
+            app:layout_constraintBottom_toTopOf="@+id/txt_date_ini"
+            app:layout_constraintEnd_toStartOf="@+id/line1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_type_permiso"
+            style="@style/Widget.TextView.Description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/content_inset_half"
+            android:gravity="start"
+            android:text="permiso"
+            android:textColor="@color/drawer_text_selector"
+            android:textSize="@dimen/dynamic_body_text_size"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_cod_user"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/line1"
+            app:layout_constraintTop_toTopOf="@+id/txt_cod_user" />
+
+        <TextView
+            android:id="@+id/txt_date_ini"
+            style="@style/Widget.TextView.Description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/content_inset_half"
+            android:gravity="start"
+            android:text="24/05/1982"
+            android:textColor="@color/drawer_text_selector"
+            android:textSize="@dimen/dynamic_body_text_size"
+            app:layout_constraintEnd_toStartOf="@+id/line1"
+            app:layout_constraintStart_toStartOf="@+id/txt_cod_user"
+            app:layout_constraintTop_toBottomOf="@+id/txt_cod_user" />
+
+        <TextView
+            android:id="@+id/txt_date_fin"
+            style="@style/Widget.TextView.Description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/content_inset_half"
+            android:gravity="start"
+            android:text="24/05/2020"
+            android:textColor="@color/drawer_text_selector"
+            android:textSize="@dimen/dynamic_body_text_size"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_date_ini"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/line1"
+            app:layout_constraintTop_toTopOf="@+id/txt_date_ini" />
+
+        <TextView
+            android:id="@+id/txt_status"
+            style="@style/Widget.TextView.Description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/content_inset_half"
+            android:gravity="start"
+            android:text="Aprobado"
+            android:textColor="@color/drawer_text_selector"
+            android:textSize="@dimen/dynamic_body_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/txt_date_ini"
+            app:layout_constraintTop_toBottomOf="@+id/txt_date_ini" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/container_data"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/container_data"
+        app:layout_constraintTop_toTopOf="@+id/container_data">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_transparent"
+            android:elevation="5dp"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/danger"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_action_delete" />
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

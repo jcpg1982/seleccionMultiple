@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.activities.mainActivity.MainActivity">
+
+    <item
+        android:id="@+id/menu_search"
+        android:icon="@drawable/ic_action_done"
+        android:iconTint="@color/colorCardLight"
+        android:title="listo"
+        android:visible="true"
+        app:showAsAction="always" />
+
+</menu>

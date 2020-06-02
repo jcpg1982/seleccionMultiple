@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.activities.mainActivity.MainActivity">
+
+    <item
+        android:id="@+id/menu_save"
+        android:icon="@drawable/ic_action_done"
+        android:title="listo"
+        android:visible="true"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_save_all"
+        android:icon="@drawable/ic_action_done_all"
+        android:title="listo all"
+        android:visible="true"
+        app:showAsAction="always" />
+
+</menu>

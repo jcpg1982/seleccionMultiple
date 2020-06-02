@@ -1,0 +1,12 @@
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cust_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="start"
+    android:paddingLeft="4dp"
+    android:textColor="@color/colorCardDark"
+    android:textIsSelectable="false"
+    android:textSize="@dimen/dynamic_body_text_size"
+    tools:text="Prueba" />
+

@@ -1,0 +1,135 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Movil Asist</string>
+
+    <string name="power_by">Powered by DMS</string>
+
+    <string name="open_with">Abre con</string>
+
+    <!-- region nav_menu-->
+    <string name="nav_config">Configuración</string>
+    <string name="nav_reg_asist">Registro de asistencia</string>
+    <string name="nav_list_marc">Listado de marcaciones</string>
+    <string name="nav_list_marc_pers">Listado de marcaciones del personal</string>
+    <string name="nav_sol_perm">Solicitud de permiso</string>
+    <string name="nav_list_sol_perm">Listado solicitud de permiso</string>
+    <string name="nav_aprob_solic">Aprobación de solicitudes</string>
+    <string name="nav_cerrar_session">Salir</string>
+    <!-- endregion-->
+
+    <!-- region button-->
+    <string name="button_accept">Aceptar</string>
+    <string name="button_cancel">Cancelar</string>
+    <string name="button_login">Ingresar</string>
+    <string name="button_send">Enviar</string>
+    <string name="button_scan">Escanear</string>
+    <string name="button_marc">Marcación</string>
+    <string name="button_last_marc">Ultimas Marcaciones</string>
+    <string name="button_last_solic">Ultimas Solicitudes</string>
+    <string name="button_search">Buscar</string>
+    <string name="button_actived_gps">Activar GPS</string>
+    <string name="button_permission_location">Permitir</string>
+    <string name="button_salir">Salir</string>
+    <string name="button_save">Guardar</string>
+    <string name="button_delete">Eliminar</string>
+    <string name="button_edit">Editar</string>
+    <string name="button_aprobe">Aprobar</string>
+    <!-- endregion-->
+
+    <!-- region textView-->
+    <string name="message_server">Para que el aplicativo funcione debe asegurarse de usar la IP correcta del WS</string>
+    <string name="current_ip">IP Actual</string>
+    <string name="conf_manual">Configuracion manual</string>
+    <string name="cod_terminal">Cód. Terminal</string>
+    <string name="asist_gps">Asistencia con Localización (No/Si)</string>
+    <string name="marc_grupo">Equipo para marcación de un grupo de personas</string>
+    <string name="ident_marc">Identificar marcación (No/Si)</string>
+    <string name="int_vaweb">Integrar con VAWEB (No/Si)</string>
+    <string name="pers_no_exist">Permitir marcación de personas no existentes (No/Si)</string>
+    <string name="cod_barras">Activar lectura de cód. de barras por camara (No/Si)</string>
+    <string name="add_photo">Colocar fotografía en la marcación (No/Si)</string>
+    <string name="time_marc">Tiempo entre marcaciones del mismo personal</string>
+    <string name="most_marc">Mostrar las marcaciones</string>
+    <string name="most_perm">Mostrar los permisos</string>
+    <string name="cod_personal">Código Personal/DNI: </string>
+    <string name="name_last_name">Nombre y Apellido</string>
+    <string name="motivo">Motivo </string>
+    <string name="type_marc">Tipo de marcación </string>
+    <string name="photo">Foto </string>
+    <string name="seg">Segundos</string>
+    <string name="dias">Dias</string>
+    <string name="reporte_diario">Reporte de cantidad de marcaciones diarias</string>
+    <string name="leyenda_diario">Leyenda diaria:</string>
+    <string name="reporte_semanal">Reporte de cantidad de marcaciones semanal</string>
+    <string name="leyenda_semanaL">Leyenda semanal:</string>
+    <string name="reporte_mensual">Reporte de cantidad de marcaciones mensuales</string>
+    <string name="leyenda_mensual">Leyenda mensual:</string>
+    <string name="fecha_marcacion">Fecha marcación</string>
+    <string name="desde">Desde</string>
+    <string name="hasta">Hasta</string>
+    <string name="next_day">Dia sgte</string>
+    <string name="supervisor">Supervisor</string>
+    <string name="observ">Obervación</string>
+    <string name="fecha_solicitud">Fecha de solicitud</string>
+    <string name="status_soli">Estado de la solicitud</string>
+    <string name="txt_solicitud">Solicitud</string>
+    <string name="txt_header_recovery_password">Ingresa la dirección de correo con la que se asocio su usuario.</string>
+    <string name="txt_list_empty">Por el momento no cuenta con información para mostrar</string>
+    <!-- endregion-->
+
+    <!-- region editText-->
+    <string name="filter_list_marc">@string/nav_list_marc</string>
+    <string name="filter_list_marc_pers">@string/nav_list_marc_pers</string>
+    <string name="filter_list_solic_perm">@string/nav_list_sol_perm</string>
+    <string name="filter_list_aprob_solic">@string/nav_aprob_solic</string>
+    <!-- endregion-->
+
+    <!-- region message-->
+    <string name="not_google_play_services">La aplicación depende de los servicios de Google Play Service, que no es compatible con tu dispositivo. Póngase en contacto con el desarrollador con detalles si esto persiste.</string>
+    <string name="attention">Atención</string>
+    <string name="gps_actived">Para continuar es necesario tener activado su GPS\n¿Desea activar su GPS o Salir?</string>
+    <string name="location_permission">Para continuar es necesario permitir el acceso a su ubicación\n¿Desea permitir los permisos a su ubicacion o Salir?</string>
+
+    <!-- endregion-->
+
+    <!-- region hint-->
+    <string name="user_hint">Ingresar Usuario</string>
+    <string name="pass_hint">Ingresar Contraseña</string>
+    <string name="correo_hint">Ingresar Correo</string>
+    <string name="type_marcacion_hint">Seleccione tipo de marcacion</string>
+    <!-- endregion-->
+
+    <string name="pass_error">Contraseña Incorrecta</string>
+
+    <string name="error">Error</string>
+    <string name="no_internet_connection">No hay conexión a internet</string>
+    <string name="internet_connection">Conectado</string>
+    <string name="field_others_type_pet">Otros</string>
+
+    <!-- Date Util -->
+    <string name="time_today">Hoy</string>
+    <string name="time_yesterday">Ayer</string>
+    <string name="time_monday">Lunes</string>
+    <string name="time_tuesday">Martes</string>
+    <string name="time_wednesday">Miércoles</string>
+    <string name="time_thursday">Jueves</string>
+    <string name="time_friday">Viernes</string>
+    <string name="time_saturday">Sábado</string>
+    <string name="time_sunday">Domingo</string>
+    <!-- endregion -->
+
+    <!-- region tabs -->
+    <string name="server">Servidor</string>
+    <string name="system">Sistema</string>
+    <string name="fecha">Fecha</string>
+    <string name="cant_diario">Cant. Diaria</string>
+    <string name="cant_semanal">Cant. Semanal</string>
+    <string name="cant_mensual">Cant. mensual</string>
+    <string name="solic_permiso">Solicitud de permiso</string>
+    <string name="solic_HE">Solicitud HE</string>
+    <!-- endregion -->
+
+    <!-- region -->
+    <string name="action_search_location_ellipsis" tools:ignore="TypographyEllipsis">Buscando Ubicación....</string>
+    <!-- endregion -->
+
+</resources>

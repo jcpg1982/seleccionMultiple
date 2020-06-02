@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    class="pe.com.dms.movilasist.ui.fragment.solicPermFragment.SolicPermisoFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_data"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/content_inset"
+        android:background="@drawable/shape_light"
+        android:elevation="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/line1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/content_inset">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/line1_card1"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".5" />
+
+            <TextView
+                android:id="@+id/text_cod_personal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/content_inset"
+                android:gravity="start"
+                android:text="@string/cod_personal"
+                android:textColor="@color/colorCardDark"
+                android:textSize="@dimen/dynamic_body_text_size"
+                app:layout_constraintEnd_toStartOf="@id/line1_card1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container_input_cod_personal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/radios_background"
+                app:layout_constraintBottom_toBottomOf="@+id/text_cod_personal"
+                app:layout_constraintEnd_toStartOf="@+id/btn_search"
+                app:layout_constraintStart_toEndOf="@+id/line1_card1"
+                app:layout_constraintTop_toTopOf="@+id/text_cod_personal">
+
+                <EditText
+                    android:id="@+id/input_cod_personal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/colorCardDark"
+                    android:textSize="@dimen/dynamic_body_text_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/btn_search"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/content_inset"
+                android:src="@drawable/ic_action_search"
+                android:tint="@color/colorCardDark"
+                app:layout_constraintBottom_toBottomOf="@+id/container_input_cod_personal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/line2_card1"
+                app:layout_constraintTop_toTopOf="@+id/container_input_cod_personal" />
+
+            <TextView
+                android:id="@+id/text_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/content_inset"
+                android:gravity="start"
+                android:text="@string/name_last_name"
+                android:textColor="@color/colorCardDark"
+                android:textSize="@dimen/dynamic_body_text_size"
+                app:layout_constraintBottom_toTopOf="@+id/container_solicitud"
+                app:layout_constraintEnd_toStartOf="@id/line1_card1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_cod_personal" />
+
+            <TextView
+                android:id="@+id/text_name_last_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/content_inset"
+                android:gravity="start"
+                android:text="Juan Perez"
+                android:textColor="@color/colorCardDark"
+                android:textSize="@dimen/dynamic_body_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/text_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/line1_card1"
+                app:layout_constraintTop_toTopOf="@+id/text_name" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container_solicitud"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/content_inset"
+                android:layout_marginEnd="@dimen/content_inset"
+                app:layout_constraintBottom_toTopOf="@+id/text_fecha"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_name">
+
+                <TextView
+                    android:id="@+id/text_solicitud"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/content_inset"
+                    android:gravity="start"
+                    android:text="@string/txt_solicitud"
+                    android:textColor="@color/colorCardDark"
+                    android:textSize="@dimen/dynamic_body_text_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/container_spinner_solicitud"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container_spinner_solicitud"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/radios_background"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_solicitud"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_solicitud"
+                    app:layout_constraintTop_toTopOf="@+id/text_solicitud">
+
+                    <Spinner
+                        android:id="@+id/sp_solicitud"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:textColor="@color/colorCardDark"
+                        android:textSize="@dimen/dynamic_body_text_size"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_arrow1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/btn_arrow1"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_arrow_down"
+                        android:tint="@color/colorCardDark"
+                        app:layout_constraintBottom_toBottomOf="@+id/sp_solicitud"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/sp_solicitud"
+                        app:layout_constraintTop_toTopOf="@+id/sp_solicitud" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/text_fecha"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/content_inset"
+                android:gravity="start"
+                android:text="@string/fecha"
+                android:textColor="@color/colorCardDark"
+                android:textSize="@dimen/dynamic_body_text_size"
+                app:layout_constraintBottom_toTopOf="@+id/container_desde"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/container_solicitud" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container_desde"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/content_inset"
+                android:layout_marginEnd="@dimen/content_inset"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_fecha">
+
+                <TextView
+                    android:id="@+id/text_desde"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/content_inset"
+                    android:layout_marginEnd="@dimen/content_inset_half"
+                    android:gravity="start"
+                    android:text="@string/desde"
+                    android:textColor="@color/colorCardDark"
+                    android:textSize="@dimen/dynamic_body_text_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/container_input_date_ini"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container_input_date_ini"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/radios_background"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_desde"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_calendar_ini"
+                    app:layout_constraintStart_toEndOf="@+id/text_desde"
+                    app:layout_constraintTop_toTopOf="@+id/text_desde">
+
+                    <EditText
+                        android:id="@+id/input_date_ini"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:textColor="@color/colorCardDark"
+                        android:textSize="@dimen/dynamic_body_text_size"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:id="@+id/btn_calendar_ini"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="@dimen/content_inset_half"
+                    android:src="@drawable/ic_action_calendar"
+                    android:tint="@color/colorCardDark"
+                    app:layout_constraintBottom_toBottomOf="@+id/container_input_date_ini"
+                    app:layout_constraintEnd_toStartOf="@+id/container_input_time_ini"
+                    app:layout_constraintStart_toEndOf="@+id/container_input_date_ini"
+                    app:layout_constraintTop_toTopOf="@+id/container_input_date_ini" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container_input_time_ini"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/radios_background"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_calendar_ini"
+                    app:layout_constraintEnd_toStartOf="@+id/cb_next_day_ini"
+                    app:layout_constraintStart_toEndOf="@+id/btn_calendar_ini"
+                    app:layout_constraintTop_toTopOf="@+id/btn_calendar_ini">
+
+                    <EditText
+                        android:id="@+id/input_time_ini"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:textColor="@color/colorCardDark"
+                        android:textSize="@dimen/dynamic_body_text_size"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <CheckBox
+                    android:id="@+id/cb_next_day_ini"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/ic_action_unchecked"
+                    android:text="@string/next_day"
+                    app:layout_constraintBottom_toBottomOf="@+id/container_input_time_ini"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/container_input_time_ini"
+                    app:layout_constraintTop_toTopOf="@+id/container_input_time_ini" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container_hasta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/content_inset"
+                android:layout_marginEnd="@dimen/content_inset"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/container_desde">
+
+                <TextView
+                    android:id="@+id/text_hasta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/content_inset"
+                    android:layout_marginEnd="@dimen/content_inset_half"
+                    android:gravity="start"
+                    android:text="@string/hasta"
+                    android:textColor="@color/colorCardDark"
+                    android:textSize="@dimen/dynamic_body_text_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/container_input_date_fin"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container_input_date_fin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/radios_background"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_hasta"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_calendar_fin"
+                    app:layout_constraintStart_toEndOf="@+id/text_hasta"
+                    app:layout_constraintTop_toTopOf="@+id/text_hasta">
+
+                    <EditText
+                        android:id="@+id/input_date_fin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:textColor="@color/colorCardDark"
+                        android:textSize="@dimen/dynamic_body_text_size"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:id="@+id/btn_calendar_fin"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="@dimen/content_inset_half"
+                    android:src="@drawable/ic_action_calendar"
+                    android:tint="@color/colorCardDark"
+                    app:layout_constraintBottom_toBottomOf="@+id/container_input_date_fin"
+                    app:layout_constraintEnd_toStartOf="@+id/container_input_time_fin"
+                    app:layout_constraintStart_toEndOf="@+id/container_input_date_fin"
+                    app:layout_constraintTop_toTopOf="@+id/container_input_date_fin" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container_input_time_fin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/radios_background"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_calendar_fin"
+                    app:layout_constraintEnd_toStartOf="@+id/cb_next_day_fin"
+                    app:layout_constraintStart_toEndOf="@+id/btn_calendar_fin"
+                    app:layout_constraintTop_toTopOf="@+id/btn_calendar_fin">
+
+                    <EditText
+                        android:id="@+id/input_time_fin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:textColor="@color/colorCardDark"
+                        android:textSize="@dimen/dynamic_body_text_size"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <CheckBox
+                    android:id="@+id/cb_next_day_fin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/ic_action_unchecked"
+                    android:text="@string/next_day"
+                    app:layout_constraintBottom_toBottomOf="@+id/container_input_time_fin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/container_input_time_fin"
+                    app:layout_constraintTop_toTopOf="@+id/container_input_time_fin" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container_supervisor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/content_inset"
+                android:layout_marginTop="@dimen/content_inset"
+                android:layout_marginEnd="@dimen/content_inset"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/container_hasta">
+
+                <TextView
+                    android:id="@+id/text_super"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/content_inset"
+                    android:gravity="start"
+                    android:text="@string/supervisor"
+                    android:textColor="@color/colorCardDark"
+                    android:textSize="@dimen/dynamic_body_text_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/container_spiner_super"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container_spiner_super"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/radios_background"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_super"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_super"
+                    app:layout_constraintTop_toTopOf="@+id/text_super">
+
+                    <Spinner
+                        android:id="@+id/sp_super"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:textColor="@color/colorCardDark"
+                        android:textSize="@dimen/dynamic_body_text_size"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_arrow"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/btn_arrow"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_arrow_down"
+                        android:tint="@color/colorCardDark"
+                        app:layout_constraintBottom_toBottomOf="@+id/sp_super"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/sp_super"
+                        app:layout_constraintTop_toTopOf="@+id/sp_super" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/text_observ"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/content_inset"
+                android:layout_marginTop="@dimen/content_inset"
+                android:layout_marginEnd="@dimen/content_inset"
+                android:gravity="start"
+                android:text="@string/observ"
+                android:textColor="@color/colorCardDark"
+                android:textSize="@dimen/dynamic_body_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/container_supervisor" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container_input_observ"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/content_inset"
+                android:layout_marginEnd="@dimen/content_inset"
+                android:layout_marginBottom="@dimen/content_inset"
+                android:background="@drawable/radios_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/text_observ"
+                app:layout_constraintTop_toBottomOf="@+id/text_observ">
+
+                <EditText
+                    android:id="@+id/input_observ"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:inputType="textMultiLine"
+                    android:lines="6"
+                    android:textColor="@color/colorCardDark"
+                    android:textSize="@dimen/dynamic_body_text_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_bottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/content_inset_quarter"
+        android:background="@color/colorPrimary"
+        android:elevation="5dp"
+        android:padding="@dimen/content_inset_half"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible">
+
+        <TextView
+            android:id="@+id/btn_last_solic"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/button_last_solic"
+            android:textColor="@color/colorCardLight"
+            android:textSize="@dimen/static_body_text_size"
+            app:layout_constraintEnd_toStartOf="@+id/img_arrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_arrow"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:backgroundTint="@color/colorCardLight"
+            android:src="@drawable/ic_arrow_up"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_last_solic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_last_solic"
+            app:layout_constraintTop_toTopOf="@+id/btn_last_solic" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

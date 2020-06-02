@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_nav_header"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/nav_header_height">
+
+    <ImageView
+        android:id="@+id/nav_header_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:visibility="visible"
+        tools:ignore="ContentDescription"
+        tools:src="@tools:sample/backgrounds/scenic" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_profile_drawer" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/overlay_light" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/overlay_light" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_nav_header"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/content_inset"
+        android:layout_marginTop="@dimen/content_inset_half_card"
+        android:layout_marginRight="@dimen/content_inset"
+        android:layout_marginBottom="@dimen/content_inset_half_card"
+        android:gravity="center|center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/nav_header_profile"
+            android:layout_width="@dimen/profile_drawer_size"
+            android:layout_height="@dimen/profile_drawer_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"
+            tools:src="@tools:sample/avatars" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/content_inset"
+            app:layout_constraintBottom_toBottomOf="@+id/nav_header_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/nav_header_profile"
+            app:layout_constraintTop_toTopOf="@+id/nav_header_profile">
+
+            <TextView
+                android:id="@+id/nav_header_type_profile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:maxLines="2"
+                android:textSize="@dimen/dynamic_body_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/app_name" />
+
+            <TextView
+                android:id="@+id/nav_header_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:maxLines="2"
+                android:textSize="@dimen/dynamic_body_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nav_header_type_profile"
+                tools:text="@string/app_name" />
+
+            <TextView
+                android:id="@+id/nav_header_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:textSize="@dimen/dynamic_mini_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nav_header_name"
+                tools:text="dms@gmail.com" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

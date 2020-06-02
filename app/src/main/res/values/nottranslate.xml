@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- General -->
+    <string name="terms_and_conditions_url" translatable="false">http://www.linkup.com.pe/legal/</string>
+    <string name="web_url" translatable="false">http://www.linkup.com.pe/</string>
+
+    <!-- Lorem ipsum -->
+    <string name="lorem_ipsum" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer euismod dolor at ligula aliquet, blandit ultrices nibh condimentum. Aliquam aliquet sapien leo, a vestibulum tellus elementum a. Mauris feugiat porta commodo. Nam non laoreet nulla.</string>
+    <string name="lorem_ipsum_20" translatable="false">Lorem ipsum dolor sit amet.</string>
+    <string name="lorem_ipsum_50" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+    <string name="lorem_ipsum_100" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer euismod dolor at ligula aliquet, blandit ultrices nibh condimentum.</string>
+
+    <!-- Helpers -->
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+
+</resources>

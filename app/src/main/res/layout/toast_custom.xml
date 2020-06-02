@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toast_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/success_background"
+    android:layout_margin="@dimen/content_inset"
+    android:padding="@dimen/content_inset_half">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/line1"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".1" />
+
+    <ImageView
+        android:id="@+id/toastImage"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/content_inset"
+        android:tint="@color/colorCardLight"
+        app:layout_constraintEnd_toStartOf="@+id/line1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_action_done_all"
+        tools:ignore="VectorDrawableCompat" />
+
+    <TextView
+        android:id="@+id/toast_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/content_inset"
+        android:layout_marginEnd="@dimen/content_inset"
+        android:gravity="start"
+        android:textColor="@color/colorCardLight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/line1"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Fully custom toast." />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toast_layout"
+    class="pe.com.dms.movilasist.util.CustomToast"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/success_background"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/toastImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/content_inset_half"
+        android:tint="@color/colorCardLight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_action_done_all"
+        tools:ignore="VectorDrawableCompat" />
+
+    <TextView
+        android:id="@+id/toast_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/content_inset_half"
+        android:layout_marginEnd="@dimen/content_inset_less_card"
+        android:gravity="start"
+        android:textColor="@color/colorCardLight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/toastImage"
+        app:layout_constraintTop_toTopOf="@id/toastImage"
+        tools:text="Fully custom toast." />
+
+</androidx.constraintlayout.widget.ConstraintLayout>-->

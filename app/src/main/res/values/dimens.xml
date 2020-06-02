@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Font size Default static -->
+    <dimen name="static_size_button_dialog">52dp</dimen>
+    <dimen name="static_big_text_size">36dp</dimen>
+    <dimen name="static_counter_text_size">32dp</dimen>
+    <dimen name="static_display_text_size">26dp</dimen>
+    <dimen name="static_header_text_size">22dp</dimen>
+    <dimen name="static_space_title_and_text_size">20dp</dimen>
+    <dimen name="static_title_text_size">18dp</dimen>
+    <dimen name="static_content_text_size">16dp</dimen>
+    <dimen name="static_body_text_size">14dp</dimen>
+    <dimen name="static_mini_text_size">12dp</dimen>
+    <dimen name="static_tiny_text_size">10dp</dimen>
+
+    <!-- Font size Default dynamic -->
+    <dimen name="dynamic_size_button_dialog">52sp</dimen>
+    <dimen name="dynamic_big_text_size">36sp</dimen>
+    <dimen name="dynamic_counter_text_size">32sp</dimen>
+    <dimen name="dynamic_display_text_size">26sp</dimen>
+    <dimen name="dynamic_header_text_size">22sp</dimen>
+    <dimen name="dynamic_space_title_and_text_size">20sp</dimen>
+    <dimen name="dynamic_title_text_size">18sp</dimen>
+    <dimen name="dynamic_content_text_size">16sp</dimen>
+    <dimen name="dynamic_body_text_size">14sp</dimen>
+    <dimen name="dynamic_mini_text_size">12sp</dimen>
+    <dimen name="dynamic_tiny_text_size">10sp</dimen>
+
+    <!-- Elevations Default -->
+    <dimen name="toolbar_elevation">4dp</dimen>
+
+    <!-- Dimens Default -->
+    <dimen name="content_inset_more_large">32dp</dimen>
+    <dimen name="content_inset_more">24dp</dimen>
+    <dimen name="content_inset_regular">18dp</dimen>
+    <dimen name="content_inset">16dp</dimen>
+    <dimen name="content_inset_less_card">14dp</dimen>
+    <dimen name="content_inset_less">12dp</dimen>
+    <dimen name="content_inset_half">8dp</dimen>
+    <dimen name="content_inset_half_card">6dp</dimen>
+    <dimen name="content_inset_quarter">4dp</dimen>
+    <dimen name="content_inset_eighth">2dp</dimen>
+
+    <!-- Icons Default -->
+    <dimen name="icon_size_large_big">100dp</dimen>
+    <dimen name="icon_size_big">72dp</dimen>
+    <dimen name="icon_size_large">56dp</dimen>
+    <dimen name="icon_size_med">48dp</dimen>
+    <dimen name="icon_size_cat">36dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+    <dimen name="icon_size_small">22dp</dimen>
+    <dimen name="icon_size_rating">40dp</dimen>
+
+    <!-- Width/Height Default -->
+    <dimen name="nav_header_height">192dp</dimen>
+
+    <!-- Size Default -->
+    <dimen name="progress_load_more_size">32dp</dimen>
+    <dimen name="profile_drawer_size">76dp</dimen>
+    <dimen name="profile_register_size">96dp</dimen>
+    <dimen name="image_login_size">150dp</dimen>
+
+</resources>

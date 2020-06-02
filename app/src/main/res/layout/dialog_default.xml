@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialog_default"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/line1"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".13" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line1" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="@dimen/icon_size_large_big"
+        android:layout_height="@dimen/icon_size_large_big"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@drawable/rcf_white_solid" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/content_inset_half"
+            android:background="@drawable/rcf_white_solid"
+            app:backgroundTint="?attr/colorPrimary" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/content_inset_regular"
+            android:tint="@android:color/white"
+            app:srcCompat="@drawable/ic_help_outline"
+            tools:ignore="VectorDrawableCompat" />
+
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_data"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:padding="@dimen/content_inset_more"
+        app:layout_constraintBottom_toTopOf="@+id/container_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout2">
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/dynamic_title_text_size"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/container_body"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Titulo"
+            tools:visibility="visible" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dynamic_space_title_and_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_title">
+
+            <TextView
+                android:id="@+id/text_message"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:gravity="start"
+                android:maxLines="10"
+                android:minLines="6"
+                android:textColor="@color/colorCardDark"
+                android:textSize="@dimen/dynamic_mini_text_size"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Mensaje a mostrar"
+                tools:visibility="visible" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:clipToPadding="false"
+                android:overScrollMode="ifContentScrolls"
+                android:scrollbarStyle="outsideOverlay"
+                android:scrollbars="vertical"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/container_inflater"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:itemCount="3"
+                tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_list_dialog_default"
+                tools:spanCount="1"
+                tools:visibility="visible" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container_inflater"
+                style="@style/InputCustomContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/content_inset"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recycler"
+                tools:visibility="visible">
+
+                <EditText
+                    android:id="@+id/input_others"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/field_others_type_pet"
+                    android:imeOptions="actionDone"
+                    android:inputType="text|textAutoComplete|textCapWords"
+                    android:textSize="@dimen/dynamic_body_text_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dynamic_size_button_dialog"
+        android:layout_below="@+id/container_data"
+        android:orientation="horizontal"
+        android:padding="@dimen/content_inset_half"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/container_data">
+
+        <Button
+            android:id="@+id/btn_accept"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/icon_size_cat"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="@dimen/content_inset_half"
+            android:layout_marginLeft="@dimen/content_inset_half"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:textSize="@dimen/static_body_text_size"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_cancel"
+            tools:text="aceptar"
+            tools:visibility="visible" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/icon_size_cat"
+            android:layout_marginStart="@dimen/content_inset_half"
+            android:layout_marginLeft="@dimen/content_inset_half"
+            android:layout_toLeftOf="@+id/btn_accept"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:textSize="@dimen/static_body_text_size"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_accept"
+            app:layout_constraintEnd_toStartOf="@+id/btn_accept"
+            app:layout_constraintStart_toEndOf="@+id/btn_neutral"
+            app:layout_constraintTop_toTopOf="@+id/btn_accept"
+            tools:text="cancelar"
+            tools:visibility="visible" />
+
+        <Button
+            android:id="@+id/btn_neutral"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/icon_size_cat"
+            android:layout_toLeftOf="@+id/btn_cancel"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:textSize="@dimen/static_body_text_size"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_cancel"
+            app:layout_constraintEnd_toStartOf="@+id/btn_cancel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btn_cancel"
+            tools:text="neutral"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

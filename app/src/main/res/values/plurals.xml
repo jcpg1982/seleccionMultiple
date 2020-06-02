@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <plurals name="marcas">
+        <item quantity="zero">cero Marcas</item>
+        <item quantity="one">1 Marca</item>
+        <item quantity="many">%d Marcas</item>
+        <item quantity="other">%d Marcas</item>
+    </plurals>
+
+</resources>

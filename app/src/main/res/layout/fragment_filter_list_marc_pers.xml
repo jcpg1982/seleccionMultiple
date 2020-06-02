@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    class="pe.com.dms.movilasist.ui.fragment.filtersFragments.filtroListMarcPers.FiltroListMarcPersFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/content_inset">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/line1"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".5" />
+
+        <TextView
+            android:id="@+id/text_cod_personal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="@string/cod_personal"
+            android:textColor="@color/colorCardDark"
+            android:textSize="@dimen/dynamic_body_text_size"
+            app:layout_constraintEnd_toStartOf="@+id/line1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_input_cod_personal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/content_inset"
+            android:background="@drawable/radios_background"
+            app:layout_constraintBottom_toTopOf="@+id/text_fech_marcacion"
+            app:layout_constraintEnd_toStartOf="@+id/btn_calendar_ini"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_cod_personal">
+
+            <EditText
+                android:id="@+id/input_cod_personal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/text_fech_marcacion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/content_inset"
+            android:gravity="start"
+            android:text="@string/fecha_marcacion"
+            android:textColor="@color/colorCardDark"
+            android:textSize="@dimen/dynamic_body_text_size"
+            app:layout_constraintBottom_toTopOf="@+id/container_input_fecha_in"
+            app:layout_constraintEnd_toStartOf="@+id/line1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/container_input_cod_personal" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_input_fecha_in"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/content_inset"
+            android:background="@drawable/radios_background"
+            app:layout_constraintEnd_toStartOf="@+id/btn_calendar_ini"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_fech_marcacion">
+
+            <EditText
+                android:id="@+id/input_date_ini"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/btn_calendar_ini"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_action_calendar"
+            android:textColor="@color/colorCardDark"
+            android:textSize="@dimen/dynamic_body_text_size"
+            android:tint="@color/colorCardDark"
+            app:layout_constraintBottom_toBottomOf="@+id/container_input_fecha_in"
+            app:layout_constraintEnd_toStartOf="@id/line1"
+            app:layout_constraintStart_toEndOf="@+id/container_input_fecha_in"
+            app:layout_constraintTop_toTopOf="@+id/container_input_fecha_in" />
+
+        <TextView
+            android:id="@+id/text_name_last_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="@string/name_last_name"
+            android:textColor="@color/colorCardDark"
+            android:textSize="@dimen/dynamic_body_text_size"
+            app:layout_constraintBottom_toBottomOf="@+id/text_cod_personal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/line1"
+            app:layout_constraintTop_toTopOf="@+id/text_cod_personal" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_input_name_last_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/content_inset"
+            android:background="@drawable/radios_background"
+            app:layout_constraintBottom_toBottomOf="@+id/container_input_cod_personal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/line1"
+            app:layout_constraintTop_toTopOf="@+id/container_input_cod_personal">
+
+            <EditText
+                android:id="@+id/input_name_last_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_input_fecha_fin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/content_inset"
+            android:background="@drawable/radios_background"
+            app:layout_constraintBottom_toBottomOf="@+id/container_input_fecha_in"
+            app:layout_constraintEnd_toStartOf="@+id/btn_calendar_fin"
+            app:layout_constraintStart_toEndOf="@+id/line1"
+            app:layout_constraintTop_toTopOf="@+id/container_input_fecha_in">
+
+            <EditText
+                android:id="@+id/input_date_fin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/btn_calendar_fin"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_action_calendar"
+            android:textColor="@color/colorCardDark"
+            android:textSize="@dimen/dynamic_body_text_size"
+            android:tint="@color/colorCardDark"
+            app:layout_constraintBottom_toBottomOf="@+id/container_input_fecha_fin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/container_input_fecha_fin"
+            app:layout_constraintTop_toTopOf="@+id/container_input_fecha_fin" />
+
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/danger"
+            android:text="@string/button_search"
+            android:textColor="@color/colorCardDark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

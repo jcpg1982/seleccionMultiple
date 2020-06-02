@@ -1,0 +1,32 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--client-->
+    <item name="ic_nav_reg_asist" type="drawable">@drawable/icon_reg_asist</item>
+    <item name="ic_nav_list_marc" type="drawable">@drawable/icon_list_marc</item>
+    <item name="ic_nav_list_marc_pers" type="drawable">@drawable/icon_marc_pers</item>
+    <item name="ic_nav_sol_perm" type="drawable">@drawable/icon_solic_perm</item>
+    <item name="ic_nav_list_solic_perm" type="drawable">@drawable/icon_list_marc</item>
+    <item name="ic_nav_aprob_solic" type="drawable">@drawable/icon_aprob_solic</item>
+    <item name="ic_nav_exit" type="drawable">@drawable/ic_action_exit</item>
+    <!--<item name="ic_nav_activation" type="drawable">@drawable/ic_action_activation</item>
+    <item name="ic_nav_sac" type="drawable">@drawable/ic_action_headset</item>
+
+    <item name="ic_nav_website" type="drawable">@drawable/ic_action_website</item>
+    <item name="ic_nav_logout" type="drawable">@drawable/ic_action_logout</item>-->
+    <item name="ic_nav_settings" type="drawable">@drawable/ic_action_settings</item>
+
+    <!--<item name="ic_nav_home" type="drawable">@drawable/ic_action_home</item>-->
+
+    <!--especialista-->
+    <!--<item name="ic_nav_queries" type="drawable">@drawable/ic_action_queries</item>
+    <item name="ic_nav_team_specialists" type="drawable">@drawable/ic_action_person_group</item>
+    <item name="ic_nav_matchs" type="drawable">@drawable/ic_action_hand_shake</item>-->
+
+    <!--<item name="ic_nav_support" type="drawable">@drawable/ic_action_help</item>
+    <item name="ic_nav_catalog" type="drawable">@drawable/ic_action_catalog</item>
+    <item name="ic_nav_home" type="drawable">@drawable/ic_action_home</item>
+    <item name="ic_visits_buy" type="drawable">@drawable/ic_favorite</item>
+    <item name="ic_visits_give_away" type="drawable">@drawable/ic_gift</item>
+    <item name="ic_visits_no_buy" type="drawable">@drawable/ic_thinking</item>-->
+
+</resources>

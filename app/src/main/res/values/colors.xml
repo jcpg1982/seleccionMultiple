@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorAccentSecondary">#BF512D</color>
+    <color name="colorAccentLight">#44BBC4</color>
+    <color name="colorAccentDark">#3d9eb6</color>
+
+    <color name="colorWindowsBackgroundDark">@color/colorPrimaryDark</color>
+    <color name="colorWindowsBackgroundLight">@color/colorPrimary</color>
+
+    <color name="colorCardDark">#000000</color>
+    <color name="colorCardLight">#FFFFFF</color>
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="colorPrimaryLight">#C5CAE9</color>
+    <color name="colorPrimaryText">#414141</color>
+    <color name="colorSecondaryText">#858484</color>
+
+    <color name="overlay_dark">#20000000</color>
+    <color name="overlay_light">#33FFFFFF</color>
+
+    <color name="colorBackgroundChat">@color/colorWindowsBackgroundLight</color>
+
+    <color name="toolbar_dark_title_color">@android:color/white</color>
+    <color name="toolbar_dark_icons_color">@android:color/white</color>
+    <color name="toolbar_light_title_color">@color/colorPrimary</color>
+    <color name="toolbar_light_icons_color">@color/colorPrimary</color>
+
+    <color name="colorDrawer">#FFFFFF</color>
+
+    <color name="divider_dark">#11000000</color>
+    <color name="divider_light">#11FFFFFF</color>
+
+    <color name="control_highlight_light">#27FFFFFF</color>
+    <color name="control_highlight_dark">#11000000</color>
+
+    <color name="error">#FF1744</color>
+
+    <!-- Colors Alerts -->
+    <color name="danger">@color/error</color>
+    <color name="success">#02C161</color>
+    <color name="links">#1240ff</color>
+
+    <!-- Custom Dialog-->
+    <color name="colorSuccess">#0FA044</color>
+    <color name="colorSuccessDark">#065210</color>
+    <color name="colorSuccessLight">#37E763</color>
+
+    <color name="colorWarning">#ff9100</color>
+    <color name="colorWarningDark">#c56200</color>
+    <color name="colorWarningLight">#ffc246</color>
+
+    <color name="colorError">#B71C1C</color>
+    <color name="colorErrorDark">#4D0505</color>
+    <color name="colorErrorLight">#f05545</color>
+
+    <color name="alpha_accent">#C0BDC2</color>
+    <color name="alpha_error">#AFFF1744</color>
+
+    <!-- Others -->
+    <color name="icons">#FFFFFF</color>
+    <color name="border">#6B6B6B</color>
+    <color name="divider">#BDBDBD</color>
+
+    <color name="colorStatusDark">#1c1a46</color>
+    <color name="colorStatusLight">@color/colorPrimary</color>
+
+</resources>
