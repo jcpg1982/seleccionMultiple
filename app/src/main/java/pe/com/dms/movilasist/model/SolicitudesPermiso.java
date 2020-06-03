@@ -20,6 +20,7 @@ public class SolicitudesPermiso implements Serializable {
     private String vchEmailSupervisor;
     private int intEstadoSolicitud;
     private String vchEstadoSolicitud;
+    private boolean isChecked;
 
     public SolicitudesPermiso() {
     }
@@ -186,6 +187,13 @@ public class SolicitudesPermiso implements Serializable {
         this.vchEstadoSolicitud = vchEstadoSolicitud;
     }
 
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
 
     @Override
     public String toString() {
@@ -207,6 +215,7 @@ public class SolicitudesPermiso implements Serializable {
                 ", vchEmailSupervisor='" + vchEmailSupervisor + '\'' +
                 ", intEstadoSolicitud=" + intEstadoSolicitud +
                 ", vchEstadoSolicitud='" + vchEstadoSolicitud + '\'' +
+                ", isChecked=" + isChecked +
                 '}';
     }
 }

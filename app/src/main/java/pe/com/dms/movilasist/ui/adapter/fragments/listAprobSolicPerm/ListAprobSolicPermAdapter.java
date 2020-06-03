@@ -4,18 +4,13 @@ import android.content.Context;
 import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.selection.ItemDetailsLookup;
-import androidx.recyclerview.selection.ItemKeyProvider;
-import androidx.recyclerview.selection.SelectionTracker;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import pe.com.dms.movilasist.R;
@@ -33,12 +28,16 @@ public class ListAprobSolicPermAdapter extends BasePaginationAdapter<Solicitudes
     private ItemFooterPaginationBinding bindingPagination;
     private List<SolicitudesPermiso> mDataListSelect;
 
-    @Nullable
-    private SelectionTracker<String> mSelectionTracker;
+    private OnLongClickListener mListener;
+    private Context mContext;
 
-    public ListAprobSolicPermAdapter() {
+    public ListAprobSolicPermAdapter(Context context) {
+        if (mDataList == null)
+            mDataList = new ArrayList<>();
         if (mDataListSelect == null)
             mDataListSelect = new ArrayList<>();
+        mDataListSelect.clear();
+        mContext = context;
     }
 
     @Override
@@ -129,87 +128,85 @@ public class ListAprobSolicPermAdapter extends BasePaginationAdapter<Solicitudes
         return mDataListSelect;
     }
 
-    public void setSelectionTracker(SelectionTracker<String> selectionTracker) {
-        mSelectionTracker = selectionTracker;
+    public void setListener(OnLongClickListener listener) {
+        mListener = listener;
+        notifyDataSetChanged();
+    }
+
+    public boolean ifExist(SolicitudesPermiso model) {
+        if (mDataListSelect != null && mDataListSelect.size() > 0) {
+            for (SolicitudesPermiso item : mDataListSelect) {
+                if (item.getIntIdmSolicitud() == model.getIntIdmSolicitud()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private void removeList(SolicitudesPermiso model) {
+        Iterator<SolicitudesPermiso> iterator = mDataListSelect.iterator();
+        if (mDataListSelect != null && mDataListSelect.size() > 0) {
+            while (iterator.hasNext()) {
+                SolicitudesPermiso item = iterator.next();
+                if (item.getIntIdmSolicitud() == model.getIntIdmSolicitud()) {
+                    iterator.remove();
+                }
+            }
+        }
     }
 
     public class BodyViewHolder extends RecyclerView.ViewHolder
-            implements View.OnLongClickListener {
+            implements View.OnClickListener {
 
         private SolicitudesPermiso model;
-        private final PermisoItemDetails permisoItemDetails;
+        private int getPosition;
 
         public BodyViewHolder(View view) {
             super(view);
-            bindingBody.containerItem.setOnLongClickListener(this);
-            //bindingBody.containerItem.setOnClickListener(this);
-            permisoItemDetails = new PermisoItemDetails();
+            bindingBody.containerItem.setOnClickListener(this);
         }
 
         public void bind(int pos, SolicitudesPermiso item) {
             this.model = item;
-            permisoItemDetails.position = pos;
-            permisoItemDetails.identifier = String.valueOf(model.getIntEstadoSolicitud());
-
+            getPosition = pos;
             bindingBody.txtCodUser.setText(model.getVchCodPersonal());
             bindingBody.txtDateIni.setText(model.getDtmFechaInicio() + " " + model.getVchHoraInicio());
             bindingBody.txtDateFin.setText(model.getDtmFechaFin() + " " + model.getVchHoraFin());
             bindingBody.txtTypePermiso.setText(model.getVchConcepto());
             bindingBody.txtStatus.setText(model.getVchEstadoSolicitud());
 
-            if (mDataListSelect.contains(model)) {
-                bindingBody.imgSelect.setVisibility(View.VISIBLE);
-            } else {
-                bindingBody.imgSelect.setVisibility(View.GONE);
+            bindingBody.cbChecked.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_action_unchecked));
+
+            if (model.isChecked()) {
+                bindingBody.cbChecked.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_action_checked));
             }
         }
 
         @Override
-        public boolean onLongClick(View v) {
+        public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.container_item:
-                    notifyDataSetChanged();
-                    if (mDataListSelect.contains(model)) {
-                        mDataListSelect.remove(model);
+                    if (!model.isChecked()) {
+                        notifyItemChanged(getPosition);
+                        model.setChecked(true);
+
+                        if (!ifExist(model)) {
+                            mDataListSelect.add(model);
+                        }
                     } else {
-                        mDataListSelect.add(model);
+                        removeList(model);
+                        notifyItemChanged(getPosition);
+                        model.setChecked(false);
+                        bindingBody.cbChecked.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_action_unchecked));
                     }
-                    v.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
-                    notifyItemChanged(mDataList.indexOf(model), model);
-                    Log.e(TAG, "mDataListSelect: " + mDataListSelect + ", mDataList.indexOf(data): " + mDataList.indexOf(model));
-                    return true;
+
+                    if (mListener != null)
+                        mListener.itemLongClick(model, getPosition, false);
+
+                    Log.e(TAG, "onClick mDataListSelect; " + mDataListSelect);
+                    break;
             }
-            return false;
-        }
-
-        public ItemDetailsLookup.ItemDetails<String> getPermisoItemDetails(@NonNull MotionEvent motionEvent) {
-            return permisoItemDetails;
-        }
-    }
-
-    static class PermisoItemDetails extends ItemDetailsLookup.ItemDetails<String> {
-        private int position;
-        private String identifier;
-
-        @Override
-        public int getPosition() {
-            return position;
-        }
-
-        @Nullable
-        @Override
-        public String getSelectionKey() {
-            return identifier;
-        }
-
-        @Override
-        public boolean inSelectionHotspot(@NonNull MotionEvent e) {
-            return true;
-        }
-
-        @Override
-        public boolean inDragRegion(@NonNull MotionEvent e) {
-            return true;
         }
     }
 
@@ -222,5 +219,9 @@ public class ListAprobSolicPermAdapter extends BasePaginationAdapter<Solicitudes
         protected void bind() {
             bindingPagination.progressLoading.setIndeterminate(true);
         }
+    }
+
+    public interface OnLongClickListener {
+        boolean itemLongClick(SolicitudesPermiso item, int pos, boolean longPress);
     }
 }

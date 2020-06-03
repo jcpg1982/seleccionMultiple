@@ -6,19 +6,26 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.selection.ItemDetailsLookup;
+import androidx.recyclerview.selection.ItemKeyProvider;
+import androidx.recyclerview.selection.SelectionTracker;
+import androidx.recyclerview.selection.StorageStrategy;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -39,6 +46,7 @@ import pe.com.dms.movilasist.ui.decorations.DividerItemDecoration;
 import pe.com.dms.movilasist.ui.dialog.DefaultDialog;
 import pe.com.dms.movilasist.ui.fragment.base.BaseMainFragment;
 import pe.com.dms.movilasist.ui.fragment.listAprobSolic.ListAprobSolicPagerFragment;
+import pe.com.dms.movilasist.ui.fragment.listAprobSolic.solicPerm.ListAprobSolicPermFragment;
 import pe.com.dms.movilasist.ui.fragment.solicPermFragment.SolicPermisoFragment;
 import pe.com.dms.movilasist.util.DateUtils;
 import pe.com.dms.movilasist.util.ImageConverterUtils;
@@ -58,11 +66,6 @@ public class ListAprobSolicHEFragment extends BaseMainFragment implements View.O
     ListAprobSolicHEFragmentPresenter presenter;
 
     private ListAprobSolicPermHEAdapter mAdapter;
-    private LinearLayoutManager mLayoutManager;
-    private ItemTouchHelper mItemTouchHelper;
-    private List<SolicitudesPermiso> mListTempAprobar;
-    private List<String> mListTemp;
-
 
     public ListAprobSolicHEFragment() {
     }
@@ -100,10 +103,6 @@ public class ListAprobSolicHEFragment extends BaseMainFragment implements View.O
         getActivityComponent().inject(this);
         Log.e(TAG, "onCreate");
         presenter.attachView(this);
-        if (mListTempAprobar == null)
-            mListTempAprobar = new ArrayList<>();
-        if (mListTemp == null)
-            mListTemp = new ArrayList<>();
     }
 
     @Nullable
@@ -123,6 +122,11 @@ public class ListAprobSolicHEFragment extends BaseMainFragment implements View.O
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
         }
@@ -132,16 +136,33 @@ public class ListAprobSolicHEFragment extends BaseMainFragment implements View.O
     }
 
     private void setupRecyclerView() {
-        mLayoutManager = new LinearLayoutManager(getContext());
-        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         binding.recycler.setHasFixedSize(true);
-        binding.recycler.setLayoutManager(mLayoutManager);
+        binding.recycler.setLayoutManager(layoutManager);
         binding.recycler.addItemDecoration(new DividerItemDecoration(getActivity(),
                 R.drawable.line_divider_primary, false, true));
         mAdapter = new ListAprobSolicPermHEAdapter();
-
-        binding.recycler.setAdapter(mAdapter);
         //binding.recycler.addOnScrollListener(recyclerViewOnScrollListener);
+        binding.recycler.setAdapter(mAdapter);
+
+        mAdapter.setListener((item, pos, longPress) -> {
+            if (!longPress) {
+                if (mAdapter.getDataListSelect().size() > 0) {
+                    binding.containerCount.setVisibility(View.VISIBLE);
+                    binding.txtCount.setText(getResources().getString(R.string.aprobe_x_permisos,
+                            getResources().getQuantityString(R.plurals.solicitud,
+                                    mAdapter.getDataListSelect().size(), mAdapter.getDataListSelect().size())));
+                } else {
+                    binding.containerCount.setVisibility(View.GONE);
+                }
+                if (isExistInList(item)) {
+                    mAdapter.updateSelectItem(false, pos);
+                } else {
+                    mAdapter.updateSelectItem(true, pos);
+                }
+            }
+        });
 
         ItemTouchHelper.Callback callback = new SwipeHelperUpdate(getContext(), binding.recycler) {
             @Override
@@ -169,7 +190,7 @@ public class ListAprobSolicHEFragment extends BaseMainFragment implements View.O
                         }
                 ));
                 createButtonSwipes.add(new ButtonSwipeAction(
-                        "Aceptar",
+                        "Aprobar",
                         ImageConverterUtils.drawableToBitmap(getResources().getDrawable(R.drawable.ic_action_done)),
                         Color.parseColor("#3F51B5"),
                         new OnItemClickActionListener() {
@@ -191,8 +212,8 @@ public class ListAprobSolicHEFragment extends BaseMainFragment implements View.O
                 ));
             }
         };
-        mItemTouchHelper = new ItemTouchHelper(callback);
-        mItemTouchHelper.attachToRecyclerView(binding.recycler);
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
+        itemTouchHelper.attachToRecyclerView(binding.recycler);
     }
 
     /*private void setupSwipeRefresh() {
@@ -256,6 +277,7 @@ public class ListAprobSolicHEFragment extends BaseMainFragment implements View.O
             binding.recycler.setVisibility(View.VISIBLE);
             binding.txtListEmpty.setVisibility(View.GONE);
             mAdapter.setData((ArrayList<SolicitudesPermiso>) listSolicPerm);
+
         } else {
             binding.recycler.setVisibility(View.GONE);
             binding.txtListEmpty.setVisibility(View.VISIBLE);
@@ -318,5 +340,17 @@ public class ListAprobSolicHEFragment extends BaseMainFragment implements View.O
                 })
                 .buildAndShow(((AppCompatActivity) getActivity()).getSupportFragmentManager(),
                         Constants.TAG_DIALOG_DELETE_MARC);
+    }
+
+    private boolean isExistInList(SolicitudesPermiso solicitudesPermiso) {
+        if (mAdapter.getDataListSelect().size() > 0) {
+            for (SolicitudesPermiso item : mAdapter.getDataListSelect()) {
+                if (item.getIntIdmSolicitud() == solicitudesPermiso.getIntIdmSolicitud())
+                    return true;
+            }
+            return false;
+        } else {
+            return false;
+        }
     }
 }

@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/content_inset_half"
         android:layout_marginEnd="@dimen/content_inset_half"
-        app:layout_constraintEnd_toStartOf="@+id/img_select"
+        app:layout_constraintEnd_toStartOf="@+id/cb_checked"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -100,12 +100,12 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/img_select"
+        android:id="@+id/cb_checked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/content_inset"
         android:layout_marginRight="@dimen/content_inset"
-        android:src="@drawable/ic_action_done"
+        android:src="@drawable/ic_action_unchecked"
         android:tint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="@+id/container_data"
         app:layout_constraintEnd_toEndOf="parent"

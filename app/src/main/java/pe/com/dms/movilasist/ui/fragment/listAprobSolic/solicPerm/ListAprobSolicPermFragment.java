@@ -44,9 +44,7 @@ import pe.com.dms.movilasist.util.ImageConverterUtils;
 import pe.com.dms.movilasist.util.swipe.SwipeHelperUpdate;
 
 public class ListAprobSolicPermFragment extends BaseMainFragment implements View.OnClickListener,
-        IListAprobSolicPermFragmentContract.View,
-        ListAprobSolicPermAdapter.OnReloadClickListener/*,
-        ActionMode.Callback */ {
+        IListAprobSolicPermFragmentContract.View {
 
     public static final String TAG = ListAprobSolicPermFragment.class.getSimpleName();
 
@@ -58,9 +56,6 @@ public class ListAprobSolicPermFragment extends BaseMainFragment implements View
     ListAprobSolicPermFragmentPresenter presenter;
 
     private ListAprobSolicPermAdapter mAdapter;
-    SelectionTracker<String> selectionTracker;
-    /*private SelectionTracker<Long> selectionTracker;
-    private ActionMode actionMode;*/
 
     public ListAprobSolicPermFragment() {
     }
@@ -96,9 +91,6 @@ public class ListAprobSolicPermFragment extends BaseMainFragment implements View
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (selectionTracker.hasSelection()) {
-            selectionTracker.clearSelection();
-        }
     }
 
     /*@Override
@@ -127,10 +119,9 @@ public class ListAprobSolicPermFragment extends BaseMainFragment implements View
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentListAprobSolicPermBinding.inflate(inflater, container, false);
-        View rootView = binding.getRoot();
         setupRecyclerView();
         initEvents();
-        return rootView;
+        return binding.getRoot();
     }
 
     @Override
@@ -155,9 +146,40 @@ public class ListAprobSolicPermFragment extends BaseMainFragment implements View
         binding.recycler.setLayoutManager(layoutManager);
         binding.recycler.addItemDecoration(new DividerItemDecoration(getActivity(),
                 R.drawable.line_divider_primary, false, true));
-        mAdapter = new ListAprobSolicPermAdapter();
+        mAdapter = new ListAprobSolicPermAdapter(getContext());
         //binding.recycler.addOnScrollListener(recyclerViewOnScrollListener);
         binding.recycler.setAdapter(mAdapter);
+
+        mAdapter.setListener((item, pos, longPress) -> {
+            if (!longPress) {
+                if (mAdapter.getDataListSelect().size() > 0) {
+                    binding.containerCount.setVisibility(View.VISIBLE);
+                    binding.txtCount.setText(getResources().getString(R.string.aprobe_x_permisos,
+                            getResources().getQuantityString(R.plurals.solicitud,
+                                    mAdapter.getDataListSelect().size(), mAdapter.getDataListSelect().size())));
+                } else {
+                    binding.containerCount.setVisibility(View.GONE);
+                }
+                return true;
+            }
+            return false;
+
+            /*if (!longPress) {
+                if (mAdapter.getDataListSelect().size() > 0) {
+                    binding.containerCount.setVisibility(View.VISIBLE);
+                    binding.txtCount.setText(getResources().getString(R.string.aprobe_x_permisos,
+                            getResources().getQuantityString(R.plurals.solicitud,
+                                    mAdapter.getDataListSelect().size(), mAdapter.getDataListSelect().size())));
+                } else {
+                    binding.containerCount.setVisibility(View.GONE);
+                }
+                if (isExistInList(item)) {
+                    mAdapter.updateSelectItem(false, pos);
+                } else {
+                    mAdapter.updateSelectItem(true, pos);
+                }
+            }*/
+        });
 
         ItemTouchHelper.Callback callback = new SwipeHelperUpdate(getContext(), binding.recycler) {
             @Override
@@ -209,32 +231,6 @@ public class ListAprobSolicPermFragment extends BaseMainFragment implements View
         };
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
         itemTouchHelper.attachToRecyclerView(binding.recycler);
-
-        /*selectionTracker =
-                new SelectionTracker.Builder<>(
-                        "card_selection",
-                        binding.recycler,
-                        new ListAprobSolicPermAdapter.KeyProvider(mAdapter),
-                        new ListAprobSolicPermAdapter.DetailsLookup(binding.recycler),
-                        StorageStrategy.createLongStorage())
-                        .withSelectionPredicate(SelectionPredicates.createSelectAnything())
-                        .build();
-
-        mAdapter.setSelectionTracker(selectionTracker);
-        selectionTracker.addObserver(
-                new SelectionTracker.SelectionObserver<Long>() {
-                    @Override
-                    public void onSelectionChanged() {
-                        if (selectionTracker.getSelection().size() > 0) {
-                            if (actionMode == null) {
-                                actionMode = startSupportActionMode(ListAprobSolicPermFragment.this);
-                            }
-                            actionMode.setTitle(String.valueOf(selectionTracker.getSelection().size()));
-                        } else if (actionMode != null) {
-                            actionMode.finish();
-                        }
-                    }
-                });*/
     }
 
     /*private void setupSwipeRefresh() {
@@ -300,16 +296,6 @@ public class ListAprobSolicPermFragment extends BaseMainFragment implements View
 
             mAdapter.setData((ArrayList<SolicitudesPermiso>) listSolicPerm);
 
-            selectionTracker = new SelectionTracker.Builder<>(
-                    "intIdmSolicitud",//unique id
-                    binding.recycler,
-                    new PermisoItemKeyProvider(listSolicPerm),
-                    new PermisoItemDetailsLookup(binding.recycler),
-                    StorageStrategy.createStringStorage())
-                    .build();
-            mAdapter.setSelectionTracker(selectionTracker);
-            setUpViews();
-
         } else {
             binding.recycler.setVisibility(View.GONE);
             binding.txtListEmpty.setVisibility(View.VISIBLE);
@@ -374,117 +360,15 @@ public class ListAprobSolicPermFragment extends BaseMainFragment implements View
                         Constants.TAG_DIALOG_DELETE_MARC);
     }
 
-    @Override
-    public void onReloadClick() {
-
-    }
-
-    void setUpViews() {
-        /*toolbarView.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                selectionTracker.clearSelection();
+    private boolean isExistInList(SolicitudesPermiso solicitudesPermiso) {
+        if (mAdapter.getDataListSelect().size() > 0) {
+            for (SolicitudesPermiso item : mAdapter.getDataListSelect()) {
+                if (item.getIntIdmSolicitud() == solicitudesPermiso.getIntIdmSolicitud())
+                    return true;
             }
-        });*/
-
-        updateViewsBasedOnSelection();
-        selectionTracker.addObserver(new SelectionTracker.SelectionObserver<String>() {
-            @Override
-            public void onSelectionChanged() {
-                updateViewsBasedOnSelection();
-                super.onSelectionChanged();
-            }
-
-            @Override
-            public void onSelectionRestored() {
-                updateViewsBasedOnSelection();
-                super.onSelectionRestored();
-            }
-        });
-    }
-
-    private void updateViewsBasedOnSelection() {
-        /*if (selectionTracker.hasSelection()) {
-            toolbarView.setVisibility(View.VISIBLE);
-            toolbarView.setTitle(selectionTracker.getSelection().size() + " selected");
+            return false;
         } else {
-            toolbarView.setVisibility(View.GONE);
-        }*/
-    }
-
-    private static class PermisoItemKeyProvider extends ItemKeyProvider<String> {
-
-        private final Map<String, Integer> mKeyToPosition;
-        private List<SolicitudesPermiso> mDataList;
-
-        PermisoItemKeyProvider(List<SolicitudesPermiso> dataList) {
-            super(SCOPE_CACHED);
-            mDataList = dataList;
-
-            mKeyToPosition = new HashMap<>(mDataList.size());
-            int i = 0;
-            for (SolicitudesPermiso pokemon : dataList) {
-                mKeyToPosition.put(String.valueOf(pokemon.getIntEstadoSolicitud()), i);
-                i++;
-            }
-        }
-
-        @Nullable
-        @Override
-        public String getKey(int i) {
-            Log.e(TAG, "getKey i: " + i);
-            Log.e(TAG, "getKey mPokemonList.get(i).id: " + mDataList.get(i).getIntEstadoSolicitud());
-            return String.valueOf(mDataList.get(i).getIntEstadoSolicitud());// directly from position to key
-        }
-
-        @Override
-        public int getPosition(@NonNull String s) {
-            Log.e(TAG, "getPosition s: " + s);
-            Log.e(TAG, "getPosition mKeyToPosition.get(s): " + mKeyToPosition.get(s));
-            return mKeyToPosition.get(s);
+            return false;
         }
     }
-
-    private static class PermisoItemDetailsLookup extends ItemDetailsLookup<String> {
-        RecyclerView mRecyclerView;
-
-        PermisoItemDetailsLookup(RecyclerView recyclerView) {
-            this.mRecyclerView = recyclerView;
-        }
-
-        @Nullable
-        @Override
-        public ItemDetails<String> getItemDetails(@NonNull MotionEvent motionEvent) {
-            View view = mRecyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
-            if (view != null) {
-                RecyclerView.ViewHolder viewHolder = mRecyclerView.getChildViewHolder(view);
-//                int position = viewHolder.getAdapterPosition();
-                if (viewHolder instanceof ListAprobSolicPermAdapter.BodyViewHolder) {
-                    return ((ListAprobSolicPermAdapter.BodyViewHolder) viewHolder).getPermisoItemDetails(motionEvent);
-                }
-            }
-            return null;
-        }
-    }
-
-    /*@Override
-    public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-        return true;
-    }
-
-    @Override
-    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-        return false;
-    }
-
-    @Override
-    public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-        return false;
-    }
-
-    @Override
-    public void onDestroyActionMode(ActionMode mode) {
-        selectionTracker.clearSelection();
-        this.actionMode = null;
-    }*/
 }

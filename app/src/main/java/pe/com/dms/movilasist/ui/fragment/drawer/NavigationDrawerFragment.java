@@ -164,7 +164,7 @@ public class NavigationDrawerFragment extends BaseFragment implements View.OnCli
                 NavigationIndex.APRO_SOL.setIndex(5);
                 NavigationIndex.LOGOUT.setIndex(6);
 
-                INDEX_HOME = NavigationIndex.REG_ASIST.getIndex();
+                INDEX_HOME = NavigationIndex.APRO_SOL.getIndex();
                 break;
             case TypePerfil.USER:
                 NavigationIndex.CONFIG.setIndex(-1);

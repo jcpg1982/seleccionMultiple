@@ -27,7 +27,7 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name=".ui.activities.splashActivity.SplashActivity"
+            android:name=".ui.activities.mainActivity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,9 +40,9 @@
             android:name=".ui.activities.loginActivity.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity
+        <!--<activity
             android:name=".ui.activities.mainActivity.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />-->
 
         <activity
             android:name=".ui.activities.searchActivity.SearchActivity"

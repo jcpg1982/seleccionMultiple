@@ -74,6 +74,7 @@
     <string name="txt_solicitud">Solicitud</string>
     <string name="txt_header_recovery_password">Ingresa la dirección de correo con la que se asocio su usuario.</string>
     <string name="txt_list_empty">Por el momento no cuenta con información para mostrar</string>
+    <string name="aprobe_x_permisos">Cambiar estado a %s</string>
     <!-- endregion-->
 
     <!-- region editText-->

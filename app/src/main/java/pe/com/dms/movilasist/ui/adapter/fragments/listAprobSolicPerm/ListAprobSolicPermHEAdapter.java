@@ -1,10 +1,16 @@
 package pe.com.dms.movilasist.ui.adapter.fragments.listAprobSolicPerm;
 
 import android.util.Log;
+import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.selection.ItemDetailsLookup;
+import androidx.recyclerview.selection.SelectionTracker;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -23,12 +29,15 @@ public class ListAprobSolicPermHEAdapter extends BasePaginationAdapter<Solicitud
     public static final String TAG = ListAprobSolicPermHEAdapter.class.getSimpleName();
 
     private ItemListAprobPermHEBinding bindingBody;
-    private ItemFooterPaginationBinding bindingFooter;
+    private ItemFooterPaginationBinding bindingPagination;
     private List<SolicitudesPermiso> mDataListSelect;
+
+    private OnLongClickListener mListener;
 
     public ListAprobSolicPermHEAdapter() {
         if (mDataListSelect == null)
             mDataListSelect = new ArrayList<>();
+        mDataListSelect.clear();
     }
 
     @Override
@@ -57,10 +66,10 @@ public class ListAprobSolicPermHEAdapter extends BasePaginationAdapter<Solicitud
 
     @Override
     protected RecyclerView.ViewHolder createPaginationViewHolder(ViewGroup parent) {
-        bindingFooter = ItemFooterPaginationBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        View v = bindingFooter.getRoot();
+        bindingPagination = ItemFooterPaginationBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        View v = bindingPagination.getRoot();
         final PaginationViewHolder holder = new PaginationViewHolder(v);
-        bindingFooter.btnReload.setOnClickListener(new View.OnClickListener() {
+        bindingPagination.btnReload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (onReloadClickListener != null) {
@@ -78,11 +87,9 @@ public class ListAprobSolicPermHEAdapter extends BasePaginationAdapter<Solicitud
 
     @Override
     protected void bindBodyViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
-        final BodyViewHolder holder = (BodyViewHolder) viewHolder;
-        final SolicitudesPermiso solicitudPermiso = getItem(position);
-        if (solicitudPermiso != null) {
-            holder.bind(solicitudPermiso);
-        }
+        BodyViewHolder holder = (BodyViewHolder) viewHolder;
+        SolicitudesPermiso permiso = mDataList.get(position);
+        holder.bind(position, permiso);
     }
 
     @Override
@@ -98,17 +105,17 @@ public class ListAprobSolicPermHEAdapter extends BasePaginationAdapter<Solicitud
 
     @Override
     protected void displayLoadMoreFooter() {
-        if (bindingFooter != null) {
-            bindingFooter.btnReload.setVisibility(View.GONE);
-            bindingFooter.progressLoading.setVisibility(View.VISIBLE);
+        if (bindingPagination != null) {
+            bindingPagination.btnReload.setVisibility(View.GONE);
+            bindingPagination.progressLoading.setVisibility(View.VISIBLE);
         }
     }
 
     @Override
     protected void displayErrorFooter() {
-        if (bindingFooter != null) {
-            bindingFooter.btnReload.setVisibility(View.VISIBLE);
-            bindingFooter.progressLoading.setVisibility(View.GONE);
+        if (bindingPagination != null) {
+            bindingPagination.btnReload.setVisibility(View.VISIBLE);
+            bindingPagination.progressLoading.setVisibility(View.GONE);
         }
     }
 
@@ -122,43 +129,60 @@ public class ListAprobSolicPermHEAdapter extends BasePaginationAdapter<Solicitud
         return mDataListSelect;
     }
 
-    class BodyViewHolder extends RecyclerView.ViewHolder
+    public void setListener(OnLongClickListener listener) {
+        mListener = listener;
+    }
+
+    public void updateSelectItem(boolean isChecked, int pos) {
+        Log.e(TAG, "updateSelectItem isChecked: " + isChecked + ", pos:" + pos);
+        mDataList.get(pos).setChecked(isChecked);
+        notifyItemChanged(pos);
+    }
+
+    public class BodyViewHolder extends RecyclerView.ViewHolder
             implements View.OnLongClickListener {
 
-        private SolicitudesPermiso data;
+        private SolicitudesPermiso model;
+        private int getPosition;
 
         public BodyViewHolder(View view) {
             super(view);
             bindingBody.containerItem.setOnLongClickListener(this);
         }
 
-        public void bind(final SolicitudesPermiso model) {
-            data = model;
-            bindingBody.txtCodUser.setText(data.getVchCodPersonal());
-            bindingBody.txtDateIni.setText(data.getDtmFechaFin() + " " + data.getVchHoraInicio());
-            bindingBody.txtDateFin.setText(data.getDtmFechaFin() + " " + data.getVchHoraFin());
-            bindingBody.txtTypePermiso.setText(data.getVchConcepto());
-            bindingBody.txtStatus.setText(data.getVchEstadoSolicitud());
+        public void bind(int pos, SolicitudesPermiso item) {
+            this.model = item;
+            getPosition = pos;
 
-            if (mDataListSelect.contains(data)) {
+            bindingBody.txtCodUser.setText(model.getVchCodPersonal());
+            bindingBody.txtDateIni.setText(model.getDtmFechaInicio() + " " + model.getVchHoraInicio());
+            bindingBody.txtDateFin.setText(model.getDtmFechaFin() + " " + model.getVchHoraFin());
+            bindingBody.txtTypePermiso.setText(model.getVchConcepto());
+            bindingBody.txtStatus.setText(model.getVchEstadoSolicitud());
+
+            if (model.isChecked()) {
                 bindingBody.imgSelect.setVisibility(View.VISIBLE);
             } else {
                 bindingBody.imgSelect.setVisibility(View.GONE);
             }
         }
 
-
         @Override
         public boolean onLongClick(View v) {
             switch (v.getId()) {
                 case R.id.container_item:
-                    if (mDataListSelect.contains(data)) {
-                        mDataListSelect.remove(data);
+                    if (mDataListSelect.contains(model)) {
+                        mDataListSelect.remove(model);
                     } else {
-                        mDataListSelect.add(data);
+                        mDataListSelect.add(model);
                     }
-                    notifyItemChanged(mDataList.indexOf(data));
-                    Log.e(TAG, "mDataListSelect: " + mDataListSelect);
+                    v.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+                    notifyItemChanged(getPosition, model);
+                    Log.e(TAG, "mDataListSelect: " + mDataListSelect + ", mDataList.indexOf(data): " + mDataList.indexOf(model));
+
+                    if (mListener != null)
+                        mListener.itemLongClick(model, getPosition, false);
+
                     return true;
             }
             return false;
@@ -172,7 +196,11 @@ public class ListAprobSolicPermHEAdapter extends BasePaginationAdapter<Solicitud
         }
 
         protected void bind() {
-            bindingFooter.progressLoading.setIndeterminate(true);
+            bindingPagination.progressLoading.setIndeterminate(true);
         }
+    }
+
+    public interface OnLongClickListener {
+        void itemLongClick(SolicitudesPermiso item, int pos, boolean longPress);
     }
 }
